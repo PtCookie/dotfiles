@@ -20,26 +20,55 @@ set -x COREPACK_HOME $HOME/.local/share/corepack
 set -x DOTNET_CLI_TELEMETRY_OPTOUT true
 set -x DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT true
 
+# Path
+fish_add_path -g $HOME/.local/bin
+fish_add_path -g $DENO_INSTALL_ROOT/bin
+fish_add_path -g $HOME/.dotnet/tools
+fish_add_path -g $CARGO_HOME/bin
+
 # Functions
-function proj
+function workdir
+    # Move to workdir
     if set -q WORKDIR
         cd $WORKDIR
     else if test -d $HOME/Projects
         cd $HOME/Projects
     else
-        echo "No Projects found"
+        echo "Error: WORKDIR or Projects not found."
     end
 end
 
 function gpg-change-key
-    gpg-connect-agent "scd serialno" "learn --force" /bye
+    # Update start card status
+    if type -q gpg-connect-agent
+        gpg-connect-agent "scd serialno" "learn --force" /bye
+    else
+        echo "Error: gpg-connect-agent not found."
+    end
+end
+
+function tcp-ports
+    # Show TCP listening ports
+    if type -q ss
+        ss -naltp
+    else
+        netstat -nap tcp | rg --color never -e "Active" -e "Address" -e "LISTEN"
+    end
 end
 
 # Launch GnuPG agent
-gpgconf --launch gpg-agent
+if type -q gpgconf
+    gpgconf --launch gpg-agent
+end
+
+# Set up asdf
+if test -e /opt/asdf-vm/asdf.fish
+    source /opt/asdf-vm/asdf.fish
+else if test -e /opt/asdf/libexec/asdf.fish
+    source /opt/asdf/libexec/asdf.fish
+else if test -e /usr/local/opt/asdf/libexec/asdf.fish
+    source /usr/local/opt/asdf/libexec/asdf.fish
+end
 
 # Starship prompt initialization
 starship init fish | source
-
-# Set up asdf
-source /opt/asdf-vm/asdf.fish
