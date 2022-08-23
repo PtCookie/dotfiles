@@ -11,14 +11,23 @@ alias lsa='lsd -alF'
 # Environment variable
 set -x EDITOR (which vim)
 set -x GPG_TTY (tty)
-set -x PASSWORD_STORE_DIR $HOME/.local/share/pass
+set -x DOTNET_CLI_TELEMETRY_OPTOUT true
+set -x DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT true
+
+# XDG_CONFIG_HOME
 set -x SPACEVIMDIR $HOME/.config/SpaceVim
+set -x ASDF_CONFIG_FILE $HOME/.config/asdf/asdfrc
+set -x ASDF_NPM_DEFAULT_PACKAGES_FILE $HOME/.config/asdf/npm-default-packages
+set -x ASDF_PYTHON_DEFAULT_PACKAGES_FILE $HOME/.config/asdf/pip-default-packages
+set -x ASDF_GEM_DEFAULT_PACKAGES_FILE $HOME/.config/asdf/gem-default-packages
+
+# XDG_DATA_HOME
+set -x PASSWORD_STORE_DIR $HOME/.local/share/pass
 set -x RUSTUP_HOME $HOME/.local/share/rustup
 set -x CARGO_HOME $HOME/.local/share/cargo
 set -x DENO_INSTALL_ROOT $HOME/.local/share/deno
+set -x ASDF_DATA_DIR $HOME/.local/share/asdf
 set -x COREPACK_HOME $HOME/.local/share/corepack
-set -x DOTNET_CLI_TELEMETRY_OPTOUT true
-set -x DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT true
 
 # Path
 fish_add_path -g $HOME/.local/bin
