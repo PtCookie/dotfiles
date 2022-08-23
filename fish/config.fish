@@ -20,6 +20,7 @@ set -x ASDF_CONFIG_FILE $HOME/.config/asdf/asdfrc
 set -x ASDF_NPM_DEFAULT_PACKAGES_FILE $HOME/.config/asdf/npm-default-packages
 set -x ASDF_PYTHON_DEFAULT_PACKAGES_FILE $HOME/.config/asdf/pip-default-packages
 set -x ASDF_GEM_DEFAULT_PACKAGES_FILE $HOME/.config/asdf/gem-default-packages
+set -x NPM_CONFIG_USERCONFIG $HOME/.config/npm/npmrc
 
 # XDG_DATA_HOME
 set -x PASSWORD_STORE_DIR $HOME/.local/share/pass

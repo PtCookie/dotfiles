@@ -1,0 +1,8 @@
+cache = ${HOME}/.cache/npm
+depth = 0
+long = true
+init-author-name = PtCookie
+init-author-email = dev@ptcookie.dev
+init-author-url = https://github.com/PtCookie
+init-module = ${HOME}/.config/npm/config/npm-init.js
+init-version = 0.1.0
