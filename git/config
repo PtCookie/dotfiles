@@ -1,0 +1,34 @@
+# This is Git's per-user configuration file.
+[user]
+    name = Minsup Ju
+    email = dev@ptcookie.dev
+    signingkey = CE5C6CCB44A64621
+[core]
+    editor = vim
+    autocrlf = input
+    eol = lf
+    fscache = true
+    symlinks = true
+    excludesfile = ~/.config/git/ignore
+[commit]
+    gpgsign = true
+    template = ~/.config/git/template
+[credential "https://github.com"]
+    helper = 
+    helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+    helper = 
+    helper = !/usr/bin/gh auth git-credential
+[diff "astextplain"]
+    textconv = astextplain
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[gpg]
+    program = gpg
+[init]
+    defaultBranch = main
+[pull]
+    rebase = false
