@@ -31,6 +31,7 @@ set -x ASDF_DATA_DIR $HOME/.local/share/asdf
 set -x COREPACK_HOME $HOME/.local/share/corepack
 
 # Path
+fish_add_path -g $HOME/.local/share/JetBrains/Toolbox/scripts
 fish_add_path -g $HOME/.local/bin
 fish_add_path -g $DENO_INSTALL_ROOT/bin
 fish_add_path -g $HOME/.dotnet/tools
