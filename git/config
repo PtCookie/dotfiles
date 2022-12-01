@@ -10,6 +10,11 @@
     fscache = true
     symlinks = true
     excludesfile = ~/.config/git/ignore
+[alias]
+    ll = log --oneline
+    ls = log --pretty=short --show-signature
+    lg = log --pretty=short --graph
+    unstage = reset HEAD --
 [commit]
     gpgsign = true
     template = ~/.config/git/template
