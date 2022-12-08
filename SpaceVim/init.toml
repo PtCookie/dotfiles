@@ -12,6 +12,7 @@
   statusline_unicode = true
   vimcompatible = true
   enable_vimfiler_welcome = false
+  bootstrap_before = 'gui#before'
 
 # Layers
 # Autocomplete
@@ -27,8 +28,8 @@
   default_height = 30
 
 # Sudo
-[[layers]]
-  name = 'sudo'
+#[[layers]]
+#  name = 'sudo'
 
 # Fuzzy finder
 [[layers]]
@@ -41,19 +42,19 @@
   name = 'VersionControl'
 
 # Languages
-[[layers]]
-  name = 'lang#sh'
+#[[layers]]
+#  name = 'lang#sh'
 [[layers]]
   name = 'lang#typescript'
 [[layers]]
   name = 'lang#javascript'
-[[layers]]
-  name = 'lang#ruby'
-  enabled_linters = ['rubocop']
-[[layers]]
-  name = 'lang#python'
-[[layers]]
-  name = 'lang#php'
+#[[layers]]
+#  name = 'lang#ruby'
+#  enabled_linters = ['rubocop']
+#[[layers]]
+#  name = 'lang#python'
+#[[layers]]
+#  name = 'lang#php'
 [[layers]]
   name = 'lang#toml'
 
