@@ -1,0 +1,45 @@
+colorscheme base16-tomorrow-night
+
+set termguicolors
+set number
+set nocompatible
+
+" Load plugin
+call plug#begin()
+
+Plug 'editorconfig/editorconfig-vim'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'sheerun/vim-polyglot'
+Plug 'vim-syntastic/syntastic'
+
+call plug#end()
+
+" Airline configuration
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='base16_tomorrow_night'
+
+" Syntastic configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" GUI configuration
+if has("gui_running")
+  set guioptions-=m  "menu bar
+  set guioptions-=T  "toolbar
+  set guioptions-=r  "scrollbar
+
+  set guifont=JetBrainsMono\ Nerd\ Font\ Mono
+
+  win 108 48
+endif
