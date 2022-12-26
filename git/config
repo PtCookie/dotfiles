@@ -2,14 +2,15 @@
 [user]
     name = Minsup Ju
     email = dev@ptcookie.dev
-    signingkey = CE5C6CCB44A64621
+    signingkey = 0xCE5C6CCB44A64621
 [core]
-    editor = vim
-    autocrlf = input
     eol = lf
-    fscache = true
+    autocrlf = input
     symlinks = true
+    fscache = true
     excludesfile = ~/.config/git/ignore
+    editor = vim
+    pager = delta
 [alias]
     ss = status -s
     dc = diff --cached
@@ -20,6 +21,8 @@
 [commit]
     gpgsign = true
     template = ~/.config/git/template
+[diff]
+    colorMoved = default
 [diff "astextplain"]
     textconv = astextplain
 [filter "lfs"]
@@ -31,5 +34,21 @@
     program = gpg
 [init]
     defaultBranch = main
+[interactive]
+    diffFilter = delta --color-only
+[merge]
+    conflictstyle = diff3
 [pull]
     rebase = false
+
+[delta]
+    features = side-by-side decoration
+    syntax-theme = base16
+    navigate = true
+    light = false
+[delta "side-by-side"]
+    side-by-side = true
+[delta "decoration"]
+    line-numbers = true
+    file-style = bold green ul
+    hunk-header-decoration-style = box
