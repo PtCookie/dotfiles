@@ -2,6 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 # Alias
+alias bap='bat --paging auto'
 alias baf='bat --style full'
 alias l='lsd -F'
 alias ll='lsd -lF'
