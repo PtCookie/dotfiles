@@ -10,6 +10,7 @@ alias la='lsd -AlF'
 alias lsa='lsd -alF'
 
 # Environment variable
+set -x LANG ko_KR.UTF-8
 set -x EDITOR (which vim)
 set -x GPG_TTY (tty)
 set -x DOTNET_CLI_TELEMETRY_OPTOUT true
