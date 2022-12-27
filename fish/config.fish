@@ -16,7 +16,6 @@ set -x DOTNET_CLI_TELEMETRY_OPTOUT true
 set -x DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT true
 
 # XDG_CONFIG_HOME
-set -x SPACEVIMDIR $HOME/.config/SpaceVim
 set -x ASDF_CONFIG_FILE $HOME/.config/asdf/asdfrc
 set -x ASDF_NPM_DEFAULT_PACKAGES_FILE $HOME/.config/asdf/npm-default-packages
 set -x ASDF_PYTHON_DEFAULT_PACKAGES_FILE $HOME/.config/asdf/pip-default-packages
@@ -27,6 +26,7 @@ set -x NPM_CONFIG_USERCONFIG $HOME/.config/npm/npmrc
 set -x NUGET_PACKAGES $HOME/.cache/NuGetPackage
 
 # XDG_DATA_HOME
+set -x DOTFILES $HOME/.local/share/dotfiles
 set -x PASSWORD_STORE_DIR $HOME/.local/share/pass
 set -x RUSTUP_HOME $HOME/.local/share/rustup
 set -x CARGO_HOME $HOME/.local/share/cargo
