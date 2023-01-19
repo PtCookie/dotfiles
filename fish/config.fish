@@ -47,10 +47,10 @@ function workdir
     # Move to workdir
     if set -q WORKDIR
         cd $WORKDIR
-    else if test -d $HOME/Projects
-        cd $HOME/Projects
+    else if test -d $HOME/Workspaces
+        cd $HOME/Workspaces
     else
-        echo "Error: WORKDIR or Projects not found."
+        echo "Error: WORKDIR or Workspaces not found."
     end
 end
 

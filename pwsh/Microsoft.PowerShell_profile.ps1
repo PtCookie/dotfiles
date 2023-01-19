@@ -8,19 +8,19 @@ Function lsa {lsd.exe -alF $args}
 Set-Alias -Name unset -Value Remove-Variable
 
 # Functions
-Function Set-ProjectLocation
+Function Set-LocationToWorkspace
 {
   if (Test-Path variable:WORKDIR)
   {
     Set-Location $WORKDIR
   }
-  elseif (Test-Path -Path $HOME\Projects)
+  elseif (Test-Path -Path $HOME\Workspaces)
   {
-    Set-Location $HOME\Projects
+    Set-Location $HOME\Workspaces
   }
   else
   {
-    Write-Warning "No Projects found."
+    Write-Warning "Error: WORKDIR or Workspaces not found."
   }
 }
 Function Get-FileLocation
@@ -44,7 +44,7 @@ Function Dismount-Drive
   wsl.exe --unmount \\.\PHYSICALDRIVE0
 }
 # Alias for functions
-Set-Alias -Name workdir -Value Set-ProjectLocation
+Set-Alias -Name workdir -Value Set-LocationToWorkspace
 Set-Alias -Name which -Value Get-FileLocation
 Set-Alias -Name rmrf -Value Remove-RecurseItem
 
