@@ -37,10 +37,12 @@ set -x COREPACK_HOME $HOME/.local/share/corepack
 
 # Path
 fish_add_path -g $HOME/.local/share/JetBrains/Toolbox/scripts
+fish_add_path -g $HOME/Library/Application\ Support/JetBrains/Toolbox/scripts
 fish_add_path -g $HOME/.local/bin
 fish_add_path -g $DENO_INSTALL_ROOT/bin
 fish_add_path -g $HOME/.dotnet/tools
 fish_add_path -g $CARGO_HOME/bin
+fish_add_path -g /opt/homebrew/bin
 
 # Functions
 function workdir
@@ -80,10 +82,8 @@ end
 # Set up asdf
 if test -e /opt/asdf-vm/asdf.fish
     source /opt/asdf-vm/asdf.fish
-else if test -e /opt/asdf/libexec/asdf.fish
-    source /opt/asdf/libexec/asdf.fish
-else if test -e /usr/local/opt/asdf/libexec/asdf.fish
-    source /usr/local/opt/asdf/libexec/asdf.fish
+else if test -e (brew --prefix asdf)/libexec/asdf.fish
+    source (brew --prefix asdf)/libexec/asdf.fish
 end
 
 # Starship prompt initialization
