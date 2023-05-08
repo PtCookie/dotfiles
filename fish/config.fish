@@ -82,9 +82,10 @@ end
 # Set up asdf
 if test -e /opt/asdf-vm/asdf.fish
     source /opt/asdf-vm/asdf.fish
-else if test -e (brew --prefix asdf)/libexec/asdf.fish
+else if type -q brew && test -e (brew --prefix asdf)/libexec/asdf.fish
     source (brew --prefix asdf)/libexec/asdf.fish
 end
 
 # Starship prompt initialization
 starship init fish | source
+
