@@ -14,9 +14,9 @@
 [alias]
     ss = status -s
     dc = diff --cached
-    ll = log --oneline --all
+    ll = log --oneline
     ls = log --pretty=short --show-signature
-    lg = log --pretty=short --graph --all
+    lg = log --pretty=short --graph --date-order --all
     unstage = reset HEAD --
 [commit]
     gpgsign = true
