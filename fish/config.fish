@@ -31,15 +31,11 @@ set -x DOTFILES $HOME/.local/share/dotfiles
 set -x PASSWORD_STORE_DIR $HOME/.local/share/pass
 set -x RUSTUP_HOME $HOME/.local/share/rustup
 set -x CARGO_HOME $HOME/.local/share/cargo
-set -x DENO_INSTALL_ROOT $HOME/.local/share/deno
 set -x ASDF_DATA_DIR $HOME/.local/share/asdf
 set -x COREPACK_HOME $HOME/.local/share/corepack
 
 # Path
-fish_add_path -g $HOME/.local/share/JetBrains/Toolbox/scripts
-fish_add_path -g $HOME/Library/Application\ Support/JetBrains/Toolbox/scripts
 fish_add_path -g $HOME/.local/bin
-fish_add_path -g $DENO_INSTALL_ROOT/bin
 fish_add_path -g $HOME/.dotnet/tools
 fish_add_path -g $CARGO_HOME/bin
 fish_add_path -g /opt/homebrew/bin
