@@ -1,19 +1,30 @@
 {
     "layer": "top",
     "position": "top",
-    // "height": 24,
-    // "width": 1280, // Waybar width
-    // "spacing": 4,
-    "gtk-layer-shell": false,
-    // Choose the order of the modules
-    "modules-left": ["custom/launcher", "cpu", "memory", "temperature", "network"],
-    "modules-center": ["wlr/workspaces"],
-    "modules-right": ["tray", "custom/ibus", "battery", "pulseaudio", "clock"],
-    // Modules configuration
-    "wlr/workspaces": {
-        "format": "{name}: {icon}",
-        "on-click": "activate",
-        "all-outputs": true,
+    "spacing": 4,
+    "modules-left": ["custom/launcher", "cpu", "memory", "temperature", "hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["tray", "custom/ibus", "keyboard-state", "network", "wireplumber", "clock"],
+    "custom/launcher": {
+        "format": "",
+        "on-click": "wofi --show drun",
+        "on-click-right": "killall wofi"
+    },
+    "cpu": {
+        "format": " {usage}%"
+    },
+    "memory": {
+        "format": " {}%"
+    },
+    "temperature": {
+        "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+    "hyprland/workspaces": {
+        // "format": "{name}: {icon}",
         "format-icons": {
             "1": "",
             "2": "",
@@ -22,18 +33,26 @@
             "urgent": "",
             "active": "",
             "default": ""
-        }
-    },
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "icon-size": 14,
-        "icon-theme": "Numix-Circle",
-        "tooltip-format": "{title}",
+        },
+        "all-outputs": true,
         "on-click": "activate",
-        "on-click-middle": "close"
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "hyprland/window": {
+        "separate-outputs": true
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+    "custom/ibus": {
+        "exec": "~/.config/waybar/scripts/ibus.sh",
+        "on-click": "~/.config/hypr/scripts/ibus.sh",
+        "interval": 1
     },
     "keyboard-state": {
-        // "numlock": true,
+        "numlock": true,
         "capslock": true,
         "format": "{icon} {name}",
         "format-icons": {
@@ -41,103 +60,27 @@
             "unlocked": ""
         }
     },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
+    "network": {
+        "format": "{ifname}: {ipaddr}/{cidr}",
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "⚠ Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": " {ipaddr} via {ifname}",
+        "tooltip-format-ethernet": " {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "⚠ Disconnected"
     },
-    "tray": {
-        "icon-size": 15,
-        "spacing": 10
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": " {volume}%",
+        "format-icons": ["", "", ""],
+        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+        "scroll-step": 2.0
     },
     "clock": {
         "tooltip": false,
         "timezone": "Asia/Seoul",
         "format": "{:%Y-%m-%d %A %H:%M}"
-    },
-    "cpu": {
-        "tooltip": false,
-        "format": " {usage}%"
-    },
-    "memory": {
-        "format": " {}%"
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
-    },
-    "battery": {
-        "states": {
-            "good": 80,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
-        "format-good": "", // An empty format will hide the module
-        "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": " {essid} ({signalStrength}%)",
-        "format-ethernet": " {ipaddr}/{cidr}",
-        "tooltip-format": " {ifname} via {gwaddr}",
-        "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "⚠ Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{icon} {volume}% {format_source}",
-        "format-bluetooth-muted": "{icon}  {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-    },
-    "custom/logout": {
-        "format": "",
-        "on-click": "~/.config/hypr/scripts/waylock.sh",
-        "interval": 1
-    },
-    "custom/launcher": {
-        "format": "",
-        "on-click": "wofi --show drun",
-        "on-click-right": "killall wofi"
-    },
-    "custom/ibus": {
-        "exec": "~/.config/waybar/scripts/ibus.sh",
-        "on-click": "~/.config/hypr/scripts/ibus.sh",
-        "interval": 1
-    },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     }
 }
