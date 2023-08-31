@@ -1,6 +1,9 @@
 [memory_usage]
 disabled = false
 
+[package]
+display_private = true
+
 [shell]
 disabled = false
 
