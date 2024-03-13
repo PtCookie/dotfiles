@@ -85,6 +85,11 @@ else if type -q brew && test -e (brew --prefix asdf)/libexec/asdf.fish
     source (brew --prefix asdf)/libexec/asdf.fish
 end
 
+# Auto completion for kubectl
+if type -q kubectl
+    kubectl completion fish | source
+end
+
 # Starship prompt initialization
 starship init fish | source
 
