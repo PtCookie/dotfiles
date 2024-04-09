@@ -13,6 +13,7 @@ alias lsa='lsd -alF'
 set -x LANG ko_KR.UTF-8
 set -x EDITOR (which vim)
 set -x GPG_TTY (tty)
+set -x DOCKER_HOST unix://$XDG_RUNTIME_DIR/docker.sock
 set -x DOTNET_CLI_TELEMETRY_OPTOUT true
 set -x DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT true
 
@@ -29,6 +30,7 @@ set -x NUGET_PACKAGES $HOME/.cache/NuGetPackage
 # XDG_DATA_HOME
 set -x DOTFILES $HOME/.local/share/dotfiles
 set -x PASSWORD_STORE_DIR $HOME/.local/share/pass
+set -x VAGRANT_HOME $HOME/.local/share/vagrant
 set -x RUSTUP_HOME $HOME/.local/share/rustup
 set -x CARGO_HOME $HOME/.local/share/cargo
 set -x DENO_INSTALL $HOME/.local/share/deno
