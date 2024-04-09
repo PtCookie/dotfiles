@@ -2,37 +2,43 @@
     "layer": "top",
     "position": "top",
     "spacing": 4,
-    "modules-left": ["custom/launcher", "cpu", "memory", "temperature", "hyprland/workspaces"],
+    "modules-left": ["custom/launcher", "hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "custom/ibus", "keyboard-state", "network", "wireplumber", "clock"],
+    "modules-right": ["cpu", "memory", "disk", "network", "tray", "custom/ibus", "keyboard-state", "wireplumber", "clock"],
     "custom/launcher": {
-        "format": "",
+        "format": " ",
+        "tooltip": false,
         "on-click": "wofi --show drun",
         "on-click-right": "killall wofi"
     },
-    "cpu": {
-        "format": " {usage}%"
-    },
-    "memory": {
-        "format": " {}%"
-    },
-    "temperature": {
-        "thermal-zone": 2,
-        "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
-        "critical-threshold": 80,
-        "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
+    "custom/ibus": {
+        "format": " {}",
+        "exec": "~/.config/waybar/scripts/ibus.sh",
+        "on-click": "~/.config/hypr/scripts/ibus.sh",
+        "interval": 1
     },
     "hyprland/workspaces": {
-        // "format": "{name}: {icon}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "urgent": "",
-            "active": "",
-            "default": ""
+        "format": "{name} {windows}",
+        // "format-icons": {
+        //     "1": "",
+        //     "2": "",
+        //     "3": "",
+        //     "4": "",
+        //     "urgent": "",
+        //     "active": "",
+        //     "default": ""
+        // },
+        "persistent-workspaces": {
+            "*": 4
+        },
+        "window-rewrite-default": "",
+        "window-rewrite": {
+            "class<org.mozilla.firefox>": "",
+            "class<org.mozilla.Thunderbird>": "",
+            "class<Alacritty>": "",
+            "title<ranger>": "",
+            "class<imv>": "",
+            "class<Spotify>": ""
         },
         "all-outputs": true,
         "on-click": "activate",
@@ -40,36 +46,52 @@
         "on-scroll-down": "hyprctl dispatch workspace e-1"
     },
     "hyprland/window": {
+        "format": "{}",
+        "rewrite": {
+            "(.*) — Mozilla Firefox": " $1",
+            "ranger (.*)": " $1",
+            "imv - (.*)": " $1",
+            "vim (.*)": " $1"
+        },
         "separate-outputs": true
     },
+    "cpu": {
+        "format": " CPU {usage}%"
+    },
+    "memory": {
+        "format": " Mem {used:0.2f}GiB",
+        "tooltip-format": "{percentage}% of {total:0.2f}GiB"
+    },
+    // "temperature": {
+    //     "thermal-zone": 2,
+    //     "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
+    //     "critical-threshold": 80,
+    //     "format": "{icon} {temperatureC}°C",
+    //     "format-icons": ["", "", ""]
+    // },
+    "disk": {
+        "format": " {percentage_used}% used"
+    },
+    "network": {
+        "interval": 5,
+        "format": "rx: {bandwidthDownBytes} tx: {bandwidthUpBytes}",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": " {ifname}: {ipaddr}/{cidr}",
+        "tooltip-wifi": " {essid} ({signalStrength}%)",
+        "tooltip-format-disconnected": "⚠ Disconnected"
+    },
     "tray": {
-        "icon-size": 15,
+        "icon-size": 20,
         "spacing": 10
     },
-    "custom/ibus": {
-        "exec": "~/.config/waybar/scripts/ibus.sh",
-        "on-click": "~/.config/hypr/scripts/ibus.sh",
-        "interval": 1
-    },
     "keyboard-state": {
-        "numlock": true,
+        "numlock": false,
         "capslock": true,
         "format": "{icon} {name}",
         "format-icons": {
             "locked": "",
             "unlocked": ""
         }
-    },
-    "network": {
-        "format": "{ifname}: {ipaddr}/{cidr}",
-        "format-wifi": " {essid} ({signalStrength}%)",
-        "format-ethernet": " {ifname}",
-        "format-disconnected": "⚠ Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "tooltip-format": "{ifname} via {gwaddr}",
-        "tooltip-format-wifi": " {ipaddr} via {ifname}",
-        "tooltip-format-ethernet": " {ipaddr}/{cidr}",
-        "tooltip-format-disconnected": "⚠ Disconnected"
     },
     "wireplumber": {
         "format": "{icon} {volume}%",
@@ -79,8 +101,25 @@
         "scroll-step": 2.0
     },
     "clock": {
-        "tooltip": false,
-        "timezone": "Asia/Seoul",
-        "format": "{:%Y-%m-%d %A %H:%M}"
+        "format": " {:%H:%M %a}",
+        "format-alt": " {:%Y-%m-%d %H:%M}",
+        "tooltip-format": "<small>{calendar}</small>",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos": "left",
+            "on-scroll": -1,
+            "format": {
+                "months":   "<span color='#ffead3'><b>{}</b></span>",
+                "days":     "<span><b>{}</b></span>",
+                "weeks":    "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today":    "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
     }
 }

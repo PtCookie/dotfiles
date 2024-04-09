@@ -1,7 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, "JetBrains Mono", "Noto Sans CJK KR", sans-serif;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 window#waybar {
@@ -10,7 +10,7 @@ window#waybar {
     color: #5ce626;
     /* transition-property: background-color; */
     /* transition-duration: .5s; */
-    background: rgba(29, 31, 33, 0.5);
+    background: rgba(29, 31, 33, 0.8);
 }
 
 window#waybar.hidden {
@@ -21,17 +21,29 @@ window#waybar.hidden {
 window#waybar.empty {
     background-color: transparent;
 }
+
 window#waybar.solo {
     background-color: #FFFFFF;
 }
 */
 
+tooltip {
+    background: rgba(29, 31, 33, 0.5);
+}
+
+tooltip label {
+    padding: 4px;
+    font-size: 14px;
+    color: #5ce626;
+    background: transparent;
+}
+
 #workspaces button {
-    padding: 0 5px;
+    padding: 4px 8px;
     /* background: rgba(29, 31, 33, 0.5); */
-    color: #ffffff;
+    color: #fff;
     /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
+    box-shadow: inset 0 -2px transparent;
     /* Avoid rounded borders under each workspace name */
     border: none;
     border-radius: 0;
@@ -40,17 +52,21 @@ window#waybar.solo {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 -3px #ffffff;
+    box-shadow: inset 0 -2px #5ce626;
+}
+
+#workspaces button.empty {
+    color: #666;
 }
 
 #workspaces button.active {
-    background: rgba(29, 31, 33, 1.0);
+    background: rgba(102, 102, 102, 0.2);
     color: #5ce626;
 }
 
 #workspaces button.focused {
     background-color: #64727d;
-    box-shadow: inset 0 -3px #ffffff;
+    box-shadow: inset 0 -2px #fff;
 }
 
 #workspaces button.urgent {
@@ -59,21 +75,22 @@ window#waybar.solo {
 
 #mode {
     background-color: #64727d;
-    border-bottom: 3px solid #ffffff;
+    box-shadow: inset 0 -2px #fff;
 }
 
 #mode,
-#clock,
 #cpu,
 #memory,
 #temperature,
+#disk,
 #network,
 #wireplumber,
+#clock,
 #custom-launcher,
+#custom-ibus,
 #tray,
 #keyboard-state {
-    padding: 0 10px;
-    color: #ffffff;
+    padding: 4px 8px;
     /* background: rgba(29, 31, 33, 0.5); */
 }
 
@@ -93,33 +110,37 @@ window#waybar.solo {
 }
 
 label:focus {
-    background-color: #000000;
+    background-color: #000;
 }
 
 #custom-launcher {
-	/* font-size: 24px; */
-	transition: none;
-  color: #1793d1;
+    /* font-size: 24px; */
+    transition: none;
+    color: #1793d1;
 }
 
 #cpu {
-    color: #2ecc71;
+    box-shadow: inset 0 -2px #5ce626;
 }
 
 #memory {
-    color: #9b59b6;
+    box-shadow: inset 0 -2px #f30100;
 }
 
 #temperature {
-    color: #f0932b;
+    box-shadow: inset 0 -2px #f0f;
 }
 
 #temperature.critical {
     color: #eb4d4b;
 }
 
+#disk {
+    box-shadow: inset 0 -2px #abe9b3;
+}
+
 #tray {
-    /* background-color: #2980b9; */
+    box-shadow: inset 0 -2px #fff;
 }
 
 #tray > .passive {
@@ -132,17 +153,19 @@ label:focus {
 }
 
 #custom-ibus {
-    color: #ffffff;
+    color: #fff;
+    box-shadow: inset 0 -2px #81a2be;
 }
 
 #keyboard-state {
-    /* background: #97e1ad; */
+    color: #fff;
+    box-shadow: inset 0 -2px #b294bb;
     /* color: #000000; */
-    min-width: 16px;
+    /* min-width: 16px; */
 }
 
 #keyboard-state > label {
-    padding: 0 10px;
+    /* padding: 0 10px; */
 }
 
 #keyboard-state > label.locked {
@@ -151,22 +174,24 @@ label:focus {
 }
 
 #network {
-    color: #2980b9;
+    box-shadow: inset 0 -2px #58e1ff;
 }
 
 #network.disconnected {
-    color: #f53c3c;
+    box-shadow: inset 0 -2px #f53c3c;
 }
 
 #wireplumber {
-    color: #f1c40f;
+    color: #fff;
+    box-shadow: inset 0 -2px #70c0ba;
 }
 
 #wireplumber.muted {
     color: #969896;
+    box-shadow: inset 0 -2px #70c0ba;
 }
 
 #clock {
-    color: #1793d1;
+    color: #fff;
+    box-shadow: inset 0 -2px #373b41;
 }
-
