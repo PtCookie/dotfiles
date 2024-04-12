@@ -97,7 +97,7 @@
     "format": "{icon} {volume}%",
     "format-muted": " {volume}%",
     "format-icons": ["", "", ""],
-    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "scroll-step": 2.0
   },
   "clock": {
