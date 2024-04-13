@@ -1,2 +1,2 @@
 pipenv
-python-language-server
+python-lsp-server[yapf]
