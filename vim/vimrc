@@ -1,23 +1,45 @@
 colorscheme base16-tomorrow-night
 
+set encoding=utf-8
 set termguicolors
 set number
 set nocompatible
 
+filetype plugin on
+
 " Load plugin
 call plug#begin()
+
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'yggdroot/indentline'
+
+Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+
+Plug 'airblade/vim-gitgutter'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/gv.vim'
+
 Plug 'sheerun/vim-polyglot'
-Plug 'vim-syntastic/syntastic'
 
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+Plug 'dense-analysis/ale'
+
+Plug 'rhysd/vim-lsp-ale'
 
 call plug#end()
 
@@ -27,15 +49,20 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='base16_tomorrow_night'
 
-" Syntastic configuration
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" NERDTree configuration
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if winnr() == winnr('h') && bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" NERDCommenter configuration
+let g:NERDSpaceDelims = 1
+
+" FZF shortcuts
+nnoremap <C-p> :Files .<CR>
 
 " Async autocompletion
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -43,21 +70,28 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 " Language server protocol
+" TypeScript Language Server
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+        \ 'whitelist': ['typescript', 'typescript.tsx', 'typescriptreact'],
+        \ })
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'javascript support using typescript-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
+        \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact'],
+        \ })
+endif
+
 " Rust Analyzer
 if executable('rust-analyzer')
   au User lsp_setup call lsp#register_server({
       \   'name': 'Rust Language Server',
       \   'cmd': {server_info->['rust-analyzer']},
       \   'whitelist': ['rust'],
-      \ })
-endif
-
-" Clangd
-if executable('clangd')
-  au User lsp_setup call lsp#register_server({
-      \ 'name': 'clangd',
-      \ 'cmd': {server_info->['clangd', '-background-index']},
-      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
       \ })
 endif
 
@@ -70,12 +104,12 @@ if executable('bash-language-server')
       \ })
 endif
 
-" Python Language Server
-if executable('pyls')
+" Python LSP Server
+if executable('pylsp')
   au User lsp_setup call lsp#register_server({
-      \ 'name': 'pyls',
-      \ 'cmd': {server_info->['pyls']},
-      \ 'whitelist': ['python'],
+      \ 'name': 'pylsp',
+      \ 'cmd': {server_info->['pylsp']},
+      \ 'allowlist': ['python'],
       \ })
 endif
 
@@ -117,6 +151,21 @@ augroup lsp_install
   " call s:on_lsp_buffer_enabled only for languages that has the server registered.
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+" ALE configuration
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier', 'eslint'],
+\   'javascriptreact': ['prettier', 'eslint'],
+\   'typescript': ['prettier', 'eslint'],
+\   'typescriptreact': ['prettier', 'eslint'],
+\   'rust': ['rustfmt'],
+\   'sh': ['shfmt'],
+\   'bash': ['shfmt'],
+\   'python': ['yapf'],
+\   'ruby': ['rubocop'],
+\}
 
 " GUI configuration
 if has("gui_running")
