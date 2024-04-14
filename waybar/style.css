@@ -128,7 +128,7 @@ label:focus {
 }
 
 #temperature {
-    box-shadow: inset 0 -2px #f0f;
+    box-shadow: inset 0 -2px #f0932b;
 }
 
 #temperature.critical {
@@ -136,7 +136,7 @@ label:focus {
 }
 
 #disk {
-    box-shadow: inset 0 -2px #abe9b3;
+    box-shadow: inset 0 -2px #f0f;
 }
 
 #tray {
@@ -154,12 +154,12 @@ label:focus {
 
 #custom-ibus {
     color: #fff;
-    box-shadow: inset 0 -2px #81a2be;
+    box-shadow: inset 0 -2px #b294bb;
 }
 
 #keyboard-state {
     color: #fff;
-    box-shadow: inset 0 -2px #b294bb;
+    box-shadow: inset 0 -2px #58e1ff;
     /* color: #000000; */
     /* min-width: 16px; */
 }
@@ -174,7 +174,7 @@ label:focus {
 }
 
 #network {
-    box-shadow: inset 0 -2px #58e1ff;
+    box-shadow: inset 0 -2px #81a2be;
 }
 
 #network.disconnected {
