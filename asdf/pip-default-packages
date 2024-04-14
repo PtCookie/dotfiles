@@ -1,2 +1,3 @@
 pipenv
-python-lsp-server[yapf]
+python-lsp-server
+python-lsp-ruff
