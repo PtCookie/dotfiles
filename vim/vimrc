@@ -167,7 +167,7 @@ let g:ale_fixers = {
 \   'rust': ['rustfmt'],
 \   'sh': ['shfmt'],
 \   'bash': ['shfmt'],
-\   'python': ['yapf'],
+\   'python': ['ruff', 'ruff_format'],
 \   'ruby': ['rubocop'],
 \}
 
