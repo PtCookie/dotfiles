@@ -4,8 +4,7 @@ end
 # Alias
 alias bap='bat --paging auto'
 alias baf='bat --style full'
-alias l='lsd -F'
-alias ll='lsd -lF'
+alias ls='lsd -lF'
 alias la='lsd -AlF'
 alias lsa='lsd -alF'
 
@@ -34,6 +33,7 @@ set -x VAGRANT_HOME $HOME/.local/share/vagrant
 set -x RUSTUP_HOME $HOME/.local/share/rustup
 set -x CARGO_HOME $HOME/.local/share/cargo
 set -x DENO_INSTALL $HOME/.local/share/deno
+set -x BUN_INSTALL $HOME/.local/share/bun
 set -x ASDF_DATA_DIR $HOME/.local/share/asdf
 set -x COREPACK_HOME $HOME/.local/share/corepack
 
@@ -42,6 +42,7 @@ fish_add_path -g $HOME/.local/bin
 fish_add_path -g $HOME/.dotnet/tools
 fish_add_path -g $CARGO_HOME/bin
 fish_add_path -g $DENO_INSTALL/bin
+fish_add_path -g $BUN_INSTALL/bin
 
 # Functions
 function workdir
@@ -94,4 +95,3 @@ end
 
 # Starship prompt initialization
 starship init fish | source
-
