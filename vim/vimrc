@@ -3,7 +3,6 @@ colorscheme base16-tomorrow-night
 set encoding=utf-8
 set termguicolors
 set number
-set nocompatible
 
 filetype plugin on
 
@@ -56,7 +55,7 @@ nnoremap <C-t>r :NERDTreeRefreshRoot<CR>
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if winnr() == winnr('h') && bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+  \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 " NERDCommenter configuration
 let g:NERDSpaceDelims = 1
@@ -76,55 +75,63 @@ inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 " Language server protocol
 " TypeScript Language Server
 if executable('typescript-language-server')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'typescript-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-        \ 'whitelist': ['typescript', 'typescript.tsx', 'typescriptreact'],
-        \ })
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'javascript support using typescript-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
-        \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact'],
-        \ })
-endif
-
-" Rust Analyzer
-if executable('rust-analyzer')
   au User lsp_setup call lsp#register_server({
-      \   'name': 'Rust Language Server',
-      \   'cmd': {server_info->['rust-analyzer']},
-      \   'whitelist': ['rust'],
-      \ })
+    \ 'name': 'typescript-language-server',
+    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+    \ 'whitelist': ['typescript', 'typescript.tsx', 'typescriptreact'],
+    \ })
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'javascript support using typescript-language-server',
+    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
+    \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact'],
+    \ })
 endif
 
 " Bash Language Server
 if executable('bash-language-server')
   au User lsp_setup call lsp#register_server({
-      \ 'name': 'bash-language-server',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
-      \ 'allowlist': ['sh', 'bash'],
-      \ })
+    \ 'name': 'bash-language-server',
+    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+    \ 'allowlist': ['sh', 'bash'],
+    \ })
 endif
 
 " Python LSP Server
 if executable('pylsp')
   au User lsp_setup call lsp#register_server({
-      \ 'name': 'pylsp',
-      \ 'cmd': {server_info->['pylsp']},
-      \ 'allowlist': ['python'],
-      \ })
+    \ 'name': 'pylsp',
+    \ 'cmd': {server_info->['pylsp']},
+    \ 'allowlist': ['python'],
+    \ })
 endif
 
 " Solargraph
 if executable('solargraph')
   au User lsp_setup call lsp#register_server({
-      \ 'name': 'solargraph',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-      \ 'initialization_options': {"diagnostics": "true"},
-      \ 'whitelist': ['ruby'],
-      \ })
+    \ 'name': 'solargraph',
+    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+    \ 'initialization_options': {"diagnostics": "true"},
+    \ 'whitelist': ['ruby'],
+    \ })
+endif
+
+" Rust Analyzer
+if executable('rust-analyzer')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'Rust Language Server',
+    \ 'cmd': {server_info->['rust-analyzer']},
+    \ 'whitelist': ['rust'],
+    \ })
+endif
+
+if executable('clangd')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'clangd',
+    \ 'cmd': {server_info->['clangd', '-background-index']},
+    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+    \ })
 endif
 
 function! s:on_lsp_buffer_enabled() abort
@@ -159,20 +166,24 @@ augroup END
 " ALE configuration
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['prettier', 'eslint'],
-\   'javascriptreact': ['prettier', 'eslint'],
-\   'typescript': ['prettier', 'eslint'],
-\   'typescriptreact': ['prettier', 'eslint'],
-\   'rust': ['rustfmt'],
-\   'sh': ['shfmt'],
-\   'bash': ['shfmt'],
-\   'python': ['ruff', 'ruff_format'],
-\   'ruby': ['rubocop'],
+\ '*': ['remove_trailing_lines', 'trim_whitespace'],
+\ 'typescript': ['prettier', 'eslint'],
+\ 'typescriptreact': ['prettier', 'eslint'],
+\ 'javascript': ['prettier', 'eslint'],
+\ 'javascriptreact': ['prettier', 'eslint'],
+\ 'sh': ['shfmt'],
+\ 'bash': ['shfmt'],
+\ 'python': ['ruff', 'ruff_format'],
+\ 'ruby': ['rubocop'],
+\ 'rust': ['rustfmt'],
+\ 'c': ['clang-format'],
+\ 'cpp': ['clang-format'],
+\ 'objc': ['clang-format'],
+\ 'objcpp': ['clang-format'],
 \}
 
 " GUI configuration
-if has("gui_running")
+if has('gui_running')
   set guioptions-=m  "menu bar
   set guioptions-=T  "toolbar
   set guioptions-=r  "scrollbar
