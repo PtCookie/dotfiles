@@ -2,11 +2,16 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 # Alias
-alias bap='bat --paging auto'
-alias baf='bat --style full'
-alias ls='lsd -lF'
-alias la='lsd -AlF'
-alias lsa='lsd -alF'
+if type -q bat
+    alias bap='bat --paging auto'
+    alias baf='bat --style full'
+end
+
+if type -q lsd
+    alias ls='lsd -lF'
+    alias la='lsd -AlF'
+    alias lsa='lsd -alF'
+end
 
 # Environment variable
 set -x LANG ko_KR.UTF-8
@@ -94,4 +99,6 @@ if type -q kubectl
 end
 
 # Starship prompt initialization
-starship init fish | source
+if type -q starship
+    starship init fish | source
+end
