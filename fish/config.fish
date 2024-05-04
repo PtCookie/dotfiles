@@ -49,6 +49,13 @@ fish_add_path -g $CARGO_HOME/bin
 fish_add_path -g $DENO_INSTALL/bin
 fish_add_path -g $BUN_INSTALL/bin
 
+# Android SDK path
+if test -d $HOME/Library/Android/sdk
+    set -x ANDROID_HOME $HOME/Library/Android/sdk
+    fish_add_path -g $ANDROID_HOME/emulator
+    fish_add_path -g $ANDROID_HOME/platform-tools
+end
+
 # Functions
 function workdir
     # Move to workdir
