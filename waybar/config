@@ -12,7 +12,7 @@
     "on-click-right": "killall wofi"
   },
   "custom/ibus": {
-    "format": " {}",
+    "format": "  {}",
     "exec": "~/.config/waybar/scripts/ibus.sh",
     "on-click": "~/.config/hypr/scripts/ibus.sh",
     "interval": 1
@@ -35,7 +35,10 @@
     "window-rewrite": {
       "class<org.mozilla.firefox>": "",
       "class<org.mozilla.Thunderbird>": "",
-      "class<Alacritty>": " ",
+      "class<org.telegram.desktop>": "",
+      "class<discord>": "",
+      "class<Alacritty>": "",
+      "class<pcmanfm-qt>": "",
       "title<ranger>": "",
       "class<imv>": "",
       "class<Spotify>": ""
@@ -48,10 +51,10 @@
   "hyprland/window": {
     "format": "{}",
     "rewrite": {
-      "(.*) — Mozilla Firefox": " $1",
-      "ranger (.*)": " $1",
-      "imv - (.*)": " $1",
-      "vim (.*)": "  $1"
+      "(.*) — Mozilla Firefox": "  $1",
+      "ranger (.*)": "  $1",
+      "imv - (.*)": "  $1",
+      "vim (.*)": "  $1"
     },
     "separate-outputs": true
   },
@@ -94,7 +97,7 @@
   //   }
   // },
   "wireplumber": {
-    "format": "{icon} {volume}%",
+    "format": "{icon}  {volume}%",
     "format-muted": " {volume}%",
     "format-icons": ["", "", ""],
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
