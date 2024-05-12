@@ -7,6 +7,9 @@ disabled = false
 disabled = false
 [os.symbols]
 Arch = " "
+Debian = " "
+Macos = " "
+Windows = " "
 
 [package]
 display_private = true

@@ -6,7 +6,7 @@
   "modules-center": ["hyprland/window"],
   "modules-right": ["cpu", "memory", "disk", "network", "tray", "custom/ibus", "wireplumber", "clock"],
   "custom/launcher": {
-    "format": " ",
+    "format": " ",
     "tooltip": false,
     "on-click": "wofi --show drun",
     "on-click-right": "killall wofi"
@@ -33,14 +33,18 @@
     },
     "window-rewrite-default": "",
     "window-rewrite": {
-      "class<org.mozilla.firefox>": "",
-      "class<org.mozilla.Thunderbird>": "",
-      "class<org.telegram.desktop>": "",
-      "class<discord>": "",
       "class<Alacritty>": "",
+      "class<kitty>": "󰄛",
       "class<pcmanfm-qt>": "",
-      "title<ranger>": "",
+      "title<ranger>": "",
+      "class<zathura>": "",
       "class<imv>": "",
+      "class<mpv>": "",
+      "class<org.mozilla.firefox>": "󰈹",
+      "class<org.mozilla.Thunderbird>": "",
+      "class<Brave-browser>": "",
+      "class<org.telegram.desktop>": "",
+      "class<discord>": "",
       "class<Spotify>": ""
     },
     "all-outputs": true,
@@ -51,10 +55,14 @@
   "hyprland/window": {
     "format": "{}",
     "rewrite": {
-      "(.*) — Mozilla Firefox": "  $1",
-      "ranger (.*)": "  $1",
-      "imv - (.*)": "  $1",
-      "vim (.*)": "  $1"
+      "ranger (.*)": " $1",
+      "imv - (.*)": " $1",
+      "(.*) - mpv": " $1",
+      "vim (.*)": " $1",
+      "(.*) — Mozilla Firefox": "󰈹 $1",
+      "(.*) - Mozilla Thunderbird": "  $1",
+      "(.*) - Brave": " $1",
+      "(.*) - Discord": "  $1"
     },
     "separate-outputs": true
   },
@@ -62,7 +70,7 @@
     "format": " CPU {usage}%"
   },
   "memory": {
-    "format": " Mem {used:0.2f}GiB",
+    "format": " Mem {used:0.2f}GiB",
     "tooltip-format": "{percentage}% of {total:0.2f}GiB"
   },
   // "temperature": {
@@ -70,18 +78,18 @@
   //     "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
   //     "critical-threshold": 80,
   //     "format": "{icon} {temperatureC}°C",
-  //     "format-icons": ["", "", ""]
+  //     "format-icons": ["", "", ""]
   // },
   "disk": {
     "format": " {percentage_used}% used"
   },
   "network": {
     "interval": 5,
-    "format": "rx: {bandwidthDownBytes} tx: {bandwidthUpBytes}",
-    "format-disconnected": "⚠ Disconnected",
-    "tooltip-format": " {ifname}: {ipaddr}/{cidr}",
+    "format": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+    "format-disconnected": " Disconnected",
+    "tooltip-format": " {ifname}: {ipaddr}/{cidr}",
     "tooltip-wifi": " {essid} ({signalStrength}%)",
-    "tooltip-format-disconnected": "⚠ Disconnected"
+    "tooltip-format-disconnected": " Disconnected"
   },
   "tray": {
     "icon-size": 20,
@@ -98,7 +106,7 @@
   // },
   "wireplumber": {
     "format": "{icon}  {volume}%",
-    "format-muted": " {volume}%",
+    "format-muted": " {volume}%",
     "format-icons": ["", "", ""],
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "scroll-step": 2.0
