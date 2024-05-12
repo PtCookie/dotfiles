@@ -1,5 +1,12 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 [memory_usage]
 disabled = false
+
+[os]
+disabled = false
+[os.symbols]
+Arch = " "
 
 [package]
 display_private = true
