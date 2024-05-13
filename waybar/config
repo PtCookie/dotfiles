@@ -2,11 +2,11 @@
   "layer": "top",
   "position": "top",
   "spacing": 4,
-  "modules-left": ["custom/launcher", "hyprland/workspaces"],
+  "modules-left": ["custom/launcher", "hyprland/workspaces", "mpris"],
   "modules-center": ["hyprland/window"],
   "modules-right": ["cpu", "memory", "disk", "network", "tray", "custom/ibus", "wireplumber", "clock"],
   "custom/launcher": {
-    "format": " ",
+    "format": "",
     "tooltip": false,
     "on-click": "wofi --show drun",
     "on-click-right": "killall wofi"
@@ -67,11 +67,11 @@
     "separate-outputs": true
   },
   "cpu": {
-    "format": " CPU {usage}%"
+    "format": " {usage}%"
   },
   "memory": {
-    "format": " Mem {used:0.2f}GiB",
-    "tooltip-format": "{percentage}% of {total:0.2f}GiB"
+    "format": " {used:0.2f}GiB",
+    "tooltip-format": "Mem {percentage}% of {total:0.2f}GiB\nSwap {swapPercentage}% of {swapTotal:0.2f}GiB"
   },
   // "temperature": {
   //     "thermal-zone": 2,
@@ -81,7 +81,7 @@
   //     "format-icons": ["", "", ""]
   // },
   "disk": {
-    "format": " {percentage_used}% used"
+    "format": " {percentage_used}%"
   },
   "network": {
     "interval": 5,
@@ -111,6 +111,22 @@
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "scroll-step": 2.0
   },
+  "mpris": {
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "interval": 1,
+    "player-icons": {
+      "default": "▶",
+      "elisa": "",
+      "spotify": "",
+      "firefox": "󰈹",
+      "mpv": ""
+    },
+    "status-icons": {
+      "paused": "⏸"
+    }
+    // "ignored-players": ["firefox"]
+  },
   "clock": {
     "format": " {:%H:%M %a}",
     "format-alt": " {:%Y-%m-%d %H:%M}",
@@ -120,11 +136,11 @@
       "weeks-pos": "left",
       "on-scroll": -1,
       "format": {
-        "months":   "<span color='#ffead3'><b>{}</b></span>",
-        "days":     "<span><b>{}</b></span>",
-        "weeks":    "<span color='#99ffdd'><b>W{}</b></span>",
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
         "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today":    "<span color='#ff6699'><b><u>{}</u></b></span>"
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
       }
     },
     "actions": {
