@@ -172,7 +172,7 @@ size = 10.0
 #     Windows: { family = "Consolas", style = "Regular" }
 #     macOS: { family = "Menlo", style = "Regular" }
 [font.normal]
-family = "JetBrains Mono"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 # If the bold family is not specified, it will fall back to the
