@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-if [ "$(ibus engine)" = "hangul" ];
-  then ibus engine anthy;
-elif [ "$(ibus engine)" = "anthy" ];
-  then ibus engine xkb:us::eng;
-  else ibus engine hangul;
-fi
+read INPUT
 
+if [ $INPUT = "ja" ]; then
+	ibus engine anthy
+elif [ $INPUT = "ko" ]; then
+	ibus engine hangul
+elif [ $INPUT = "en" ]; then
+	ibus engine xkb:us::eng
+fi
