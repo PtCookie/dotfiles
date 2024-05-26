@@ -17,7 +17,6 @@ end
 set -x LANG ko_KR.UTF-8
 set -x EDITOR (which vim)
 set -x GPG_TTY (tty)
-set -x DOCKER_HOST unix://$XDG_RUNTIME_DIR/docker.sock
 set -x DOTNET_CLI_TELEMETRY_OPTOUT true
 set -x DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT true
 
