@@ -9,7 +9,7 @@
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
 import = [
-#  "~/.config/alacritty/tomorrow-night.toml",
+  "~/.config/alacritty/catppuccin-macchiato.toml",
   "~/.config/alacritty/mousebindings.toml",
   "~/.config/alacritty/keybindings.toml",
 ]
