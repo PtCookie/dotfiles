@@ -4,7 +4,7 @@
   "spacing": 4,
   "modules-left": ["custom/launcher", "hyprland/workspaces", "mpris"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["cpu", "memory", "disk", "network", "tray", "custom/ibus", "wireplumber", "clock"],
+  "modules-right": ["cpu", "memory", "disk", "network", "tray", "wireplumber", "clock"],
   "custom/launcher": {
     "format": " ",
     "tooltip": false,
