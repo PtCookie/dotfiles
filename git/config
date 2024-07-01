@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
     name = Minsup Ju
-    email = dev@ptcookie.dev
+    email = me@ptcookie.net
     signingkey = 0xCE5C6CCB44A64621
 [core]
     eol = lf
