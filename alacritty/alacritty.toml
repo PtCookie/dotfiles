@@ -1,5 +1,6 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
+[general]
 # Import additional configuration files
 #
 # Imports are loaded in order, skipping all missing files, with the importing
@@ -13,19 +14,6 @@ import = [
   "~/.config/alacritty/mousebindings.toml",
   "~/.config/alacritty/keybindings.toml",
 ]
-
-# Shell
-#
-# You can set `shell.program` to the path of your favorite shell, e.g.
-# `/bin/fish`. Entries in `shell.args` are passed unmodified as arguments to the
-# shell.
-#
-# Default:
-#   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
-#   - (Windows) powershell
-#[shell]
-#program = "/bin/bash"
-#args = ["-l"]
 
 # Startup directory
 #
@@ -442,7 +430,20 @@ shape = "Block"
 #   - Always: Force the cursor to always blink
 blinking = "On"
 
-#[terminal]
+[terminal]
+# Shell
+#
+# You can set `shell.program` to the path of your favorite shell, e.g.
+# `/bin/fish`. Entries in `shell.args` are passed unmodified as arguments to the
+# shell.
+#
+# Default:
+#   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
+#   - (Windows) powershell
+#[shell]
+#program = "/bin/bash"
+#args = ["-l"]
+
 # Controls the ability to write to the system clipboard with the OSC 52
 # escape sequence. While this escape sequence is useful to copy contents
 # from the remote server, allowing any application to read from the clipboard
