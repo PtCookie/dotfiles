@@ -1,4 +1,3 @@
-// vim: set filetype=json :
 {
   "layer": "top",
   "position": "top",
@@ -53,6 +52,14 @@
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1"
   },
+  // "wlr/taskbar": {
+    // "format": "{icon}",
+    // "tooltip": true,
+    // "tooltip-format": "{title}",
+    // "on-click": "activate",
+    // "on-click-middle": "close",
+    // "active-first": true
+  // },
   "hyprland/window": {
     "format": "{}",
     "rewrite": {
