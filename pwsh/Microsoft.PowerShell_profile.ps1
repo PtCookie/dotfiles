@@ -48,5 +48,10 @@ Set-Alias -Name workdir -Value Set-LocationToWorkspace
 Set-Alias -Name which -Value Get-FileLocation
 Set-Alias -Name rmrf -Value Remove-RecurseItem
 
+# Set PSReadLine
+Set-PSReadLineOption -EditMode Emacs
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+
 # Starship prompt initialization
 Invoke-Expression (&starship init powershell)
