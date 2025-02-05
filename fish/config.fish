@@ -48,6 +48,7 @@ fish_add_path -g $HOME/.dotnet/tools
 fish_add_path -g $CARGO_HOME/bin
 fish_add_path -g $DENO_INSTALL/bin
 fish_add_path -g $BUN_INSTALL/bin
+fish_add_path -g $ASDF_DATA_DIR/shims
 
 # Android SDK path
 if test -d $HOME/Library/Android/sdk
