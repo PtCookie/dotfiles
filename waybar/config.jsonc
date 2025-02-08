@@ -35,17 +35,19 @@
     "window-rewrite": {
       "class<Alacritty>": "",
       "class<kitty>": "󰄛",
+      "class<com.mitchellh.ghostty>": "",
       "class<pcmanfm-qt>": "",
       "title<ranger>": "",
       "class<zathura>": "",
       "class<imv>": "",
       "class<mpv>": "",
-      "class<org.mozilla.firefox>": "󰈹",
-      "class<org.mozilla.Thunderbird>": "",
+      "class<zen>": "󰈹",
       "class<Brave-browser>": "",
+      "class<org.mozilla.Thunderbird>": "",
       "class<org.telegram.desktop>": "",
       "class<discord>": "",
-      "class<Spotify>": ""
+      "class<Spotify>": "",
+      "class<codium>": ""
     },
     "all-outputs": true,
     "on-click": "activate",
@@ -67,10 +69,11 @@
       "imv - (.*)": " $1",
       "(.*) - mpv": " $1",
       "vim (.*)": " $1",
-      "(.*) — Mozilla Firefox": "󰈹 $1",
-      "(.*) - Mozilla Thunderbird": "  $1",
+      "(.*) — Zen Browser": "󰈹  $1",
       "(.*) - Brave": " $1",
-      "(.*) - Discord": "  $1"
+      "(.*) - Mozilla Thunderbird": "  $1",
+      "(.*) - Discord": "  $1",
+      "(.*) - VSCodium": "  $1"
     },
     "separate-outputs": true
   },
