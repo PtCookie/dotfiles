@@ -30,6 +30,7 @@ set -x NPM_CONFIG_USERCONFIG $HOME/.config/npm/npmrc
 
 # XDG_CACHE_HOME
 set -x NUGET_PACKAGES $HOME/.cache/NuGetPackage
+set -x GOMODCACHE $HOME/.cache/go/mod
 
 # XDG_DATA_HOME
 set -x DOTFILES $HOME/.local/share/dotfiles
@@ -41,6 +42,7 @@ set -x DENO_INSTALL $HOME/.local/share/deno
 set -x BUN_INSTALL $HOME/.local/share/bun
 set -x ASDF_DATA_DIR $HOME/.local/share/asdf
 set -x COREPACK_HOME $HOME/.local/share/corepack
+set -x GOPATH $HOME/.local/share/go
 
 # Path
 fish_add_path -g $HOME/.local/bin
