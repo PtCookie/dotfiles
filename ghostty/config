@@ -1,6 +1,8 @@
 font-family = JetBrains Mono
 theme = catppuccin-macchiato
 cursor-style = block
+background-opacity = 0.8
+background-blur = true
 
 working-directory = home
 window-inherit-working-directory = false
@@ -10,4 +12,5 @@ window-height = 40
 
 shell-integration-features = no-cursor
 
+macos-titlebar-style = tabs
 macos-option-as-alt = true
