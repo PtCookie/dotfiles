@@ -4,4 +4,4 @@ Dotfiles of PtCookie.
 
 ## License
 
-MIT &copy; [PtCookie](https://blog.ptcookie.dev)
+MIT &copy; [PtCookie](https://devlog.ptcookie.net)
