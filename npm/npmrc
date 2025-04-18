@@ -3,6 +3,6 @@ depth = 0
 long = true
 init-author-name = PtCookie
 init-author-email = me@ptcookie.net
-init-author-url = https://github.com/PtCookie
+init-author-url = https://devlog.ptcookie.net/
 init-module = ${HOME}/.config/npm/config/npm-init.js
 init-version = 0.1.0
