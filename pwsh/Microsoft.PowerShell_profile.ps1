@@ -54,4 +54,13 @@ Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 # Starship prompt initialization
-Invoke-Expression (&starship init powershell)
+if (Get-Command starship -ErrorAction SilentlyContinue)
+{
+  Invoke-Expression (&starship init powershell)
+}
+
+# Fast Node Manager setup
+if (Get-Command fnm -ErrorAction SilentlyContinue)
+{
+  fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
+}
