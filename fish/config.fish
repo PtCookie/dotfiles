@@ -1,25 +1,17 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
-# Alias
-if type -q bat
-    alias bap='bat --paging auto'
-    alias baf='bat --style full'
-end
-
-if type -q lsd
-    alias ls='lsd -lF'
-    alias la='lsd -AlF'
-    alias lsa='lsd -alF'
-end
 
 # Environment variable
 set -x LANG ko_KR.UTF-8
 set -x EDITOR (which vim)
 set -x GPG_TTY (tty)
 set -x RANGER_LOAD_DEFAULT_RC FALSE
-set -x DOTNET_CLI_TELEMETRY_OPTOUT true
-set -x DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT true
+# .NET telemetry opt out
+if type -q dotnet
+    set -x DOTNET_CLI_TELEMETRY_OPTOUT true
+    set -x DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT true
+end
 
 # XDG_CONFIG_HOME
 set -x ASDF_CONFIG_FILE $HOME/.config/asdf/asdfrc
@@ -51,7 +43,6 @@ fish_add_path -g $CARGO_HOME/bin
 fish_add_path -g $DENO_INSTALL/bin
 fish_add_path -g $BUN_INSTALL/bin
 fish_add_path -g $ASDF_DATA_DIR/shims
-
 # Android SDK path
 if test -d $HOME/Library/Android/sdk
     set -x ANDROID_HOME $HOME/Library/Android/sdk
@@ -87,6 +78,18 @@ function tcp-ports
     else
         netstat -nap tcp | rg --color never -e "Active" -e "Address" -e "LISTEN"
     end
+end
+
+# Alias
+if type -q bat
+    alias bap='bat --paging auto'
+    alias baf='bat --style full'
+end
+
+if type -q lsd
+    alias ls='lsd -lF'
+    alias la='lsd -AlF'
+    alias lsa='lsd -alF'
 end
 
 # Launch GnuPG agent
