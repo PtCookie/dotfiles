@@ -1,14 +1,49 @@
-# Alias
-Function baf {bat.exe --style full $args}
-Function bap {bat.exe --paging=always $args}
-Function l {lsd.exe -F $args}
-Function ll {lsd.exe -lF $args}
-Function la {lsd.exe -AlF $args}
-Function lsa {lsd.exe -alF $args}
-Set-Alias -Name unset -Value Remove-Variable
-
 # Functions
-Function Set-LocationToWorkspace
+Function Get-HistoryPath
+{
+  (Get-PSReadLineOption).HistorySavePath
+}
+Function Mount-Drive
+{
+  wsl.exe --mount \\.\PHYSICALDRIVE0 --bare
+}
+Function Dismount-Drive
+{
+  wsl.exe --unmount \\.\PHYSICALDRIVE0
+}
+
+# Functions works as Alias
+if (Get-Command bat -ErrorAction SilentlyContinue)
+{
+  Function baf
+  {
+    bat.exe --style full $args
+  }
+  Function bap
+  {
+    bat.exe --paging=always $args
+  }
+}
+if (Get-Command lsd -ErrorAction SilentlyContinue)
+{
+  Function l
+  {
+    lsd.exe -F $args
+  }
+  Function ll
+  {
+    lsd.exe -lF $args
+  }
+  Function la
+  {
+    lsd.exe -AlF $args
+  }
+  Function lsa
+  {
+    lsd.exe -alF $args
+  }
+}
+Function workdir
 {
   if (Test-Path variable:WORKDIR)
   {
@@ -23,30 +58,17 @@ Function Set-LocationToWorkspace
     Write-Warning "Error: WORKDIR or Workspaces not found."
   }
 }
-Function Get-FileLocation
+Function which
 {
   (Get-Command $args).Source
 }
-Function Remove-RecurseItem
+Function rmrf
 {
   Remove-Item -Recurse -Force $args
 }
-Function Get-HistoryPath
-{
-  (Get-PSReadLineOption).HistorySavePath
-}
-Function Mount-Drive
-{
-  wsl.exe --mount \\.\PHYSICALDRIVE0 --bare
-}
-Function Dismount-Drive
-{
-  wsl.exe --unmount \\.\PHYSICALDRIVE0
-}
-# Alias for functions
-Set-Alias -Name workdir -Value Set-LocationToWorkspace
-Set-Alias -Name which -Value Get-FileLocation
-Set-Alias -Name rmrf -Value Remove-RecurseItem
+
+# Alias
+Set-Alias -Name unset -Value Remove-Variable
 
 # Set PSReadLine
 Set-PSReadLineOption -EditMode Emacs
