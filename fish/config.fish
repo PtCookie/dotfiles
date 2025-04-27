@@ -87,7 +87,8 @@ if type -q bat
 end
 
 if type -q lsd
-    alias ls='lsd -lF'
+    alias l='lsd -F'
+    alias ll='lsd -lF'
     alias la='lsd -AlF'
     alias lsa='lsd -alF'
 end
