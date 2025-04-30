@@ -1,16 +1,8 @@
 "query:Unread Articles:unread = \"yes\""
 https://news.ycombinator.com/rss
 https://jser.info/ko/rss/
-https://blog.codepen.io/feed/
 https://astro.build/rss.xml
-https://blog.jetbrains.com/feed/
-https://hashnode.com/blog/rss.xml
-https://proton.me/blog/feed
 https://blog.kagi.com/rss.xml
-https://www.theverge.com/rss/index.xml
-https://techcrunch.com/feed/
-https://news.itsfoss.com/latest/rss
-https://www.phoronix.com/rss.php
 https://archlinux.org/feeds/news/
 https://www.debian.org/News/news
 https://lwn.net/headlines/newrss
