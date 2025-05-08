@@ -15,6 +15,7 @@
     ss = status -s
     dc = diff --cached
     ll = log --oneline
+    lc = log --oneline --no-decorate
     ls = log --pretty=short --show-signature
     lg = log --pretty=short --graph --date-order --all
     unstage = reset HEAD --
