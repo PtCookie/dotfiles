@@ -39,5 +39,9 @@ if ! shopt -oq posix; then
 	fi
 fi
 
+if commnad -v bat &>/dev/null; then
+	export MANPAGER="bat --language man --plain --paging always"
+fi
+
 # Starship prompt initialization
 eval "$(starship init bash)"

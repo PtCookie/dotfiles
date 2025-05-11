@@ -6,7 +6,12 @@ end
 set -x LANG ko_KR.UTF-8
 set -x EDITOR (which vim)
 set -x GPG_TTY (tty)
-set -x RANGER_LOAD_DEFAULT_RC FALSE
+if type -q bat
+    set -x MANPAGER "bat --language man --plain --paging always"
+end
+if type -q ranger
+    set -x RANGER_LOAD_DEFAULT_RC FALSE
+end
 # .NET telemetry opt out
 if type -q dotnet
     set -x DOTNET_CLI_TELEMETRY_OPTOUT true
