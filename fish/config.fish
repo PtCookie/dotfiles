@@ -7,7 +7,7 @@ set -x LANG ko_KR.UTF-8
 set -x EDITOR (which vim)
 set -x GPG_TTY (tty)
 if type -q bat
-    set -x MANPAGER "bat --language man --plain --paging always"
+    set -x MANPAGER "bat --language man --paging always"
 end
 if type -q ranger
     set -x RANGER_LOAD_DEFAULT_RC FALSE

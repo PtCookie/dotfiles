@@ -40,7 +40,7 @@ if ! shopt -oq posix; then
 fi
 
 if commnad -v bat &>/dev/null; then
-	export MANPAGER="bat --language man --plain --paging always"
+	export MANPAGER="bat --language man --paging always"
 fi
 
 # Starship prompt initialization
