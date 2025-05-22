@@ -1,43 +1,36 @@
-window {
-    margin: 0px;
+@define-color background #24273a;
+@define-color foreground #cad3f5;
+@define-color selected #181926;
+
+#window {
     border-radius: 12px;
-    background-color: #282a36;
-}
-
-#input {
-    margin: 5px;
-    border: none;
-    color: #f8f8f2;
-    background-color: #44475a;
-}
-
-#inner-box {
-    margin: 5px;
-    border: none;
-    background-color: #282a36;
+    background: @background;
 }
 
 #outer-box {
-    margin: 5px;
+    margin: 8px;
+}
+
+#input {
+    margin: 4px;
     border: none;
-    background-color: #282a36;
+    color: @foreground;
+    background-color: @selected;
 }
 
 #scroll {
-    margin: 0px;
-    border: none;
+    margin: 4px 0;
+}
+
+#inner-box {
+    margin: 4px;
 }
 
 #text {
-    margin: 5px;
-    border: none;
-    color: #f8f8f2;
-} 
-
-#entry {
-    background-color: #282a36;
+    margin: 4px;
+    color: @foreground;
 }
 
 #entry:selected {
-    background-color: #44475a;
+    background-color: @selected;
 }
