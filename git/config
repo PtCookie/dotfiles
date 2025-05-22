@@ -1,56 +1,56 @@
 # This is Git's per-user configuration file.
 [user]
-    name = Minsup Ju
-    email = me@ptcookie.net
-    signingkey = 0xCE5C6CCB44A64621
+	name = Minsup Ju
+	email = me@ptcookie.net
+	signingkey = 0xCE5C6CCB44A64621
 [core]
-    eol = lf
-    autocrlf = input
-    symlinks = true
-    fscache = true
-    excludesfile = ~/.config/git/ignore
-    editor = vim
-    pager = delta
+	eol = lf
+	autocrlf = input
+	symlinks = true
+	fscache = true
+	excludesfile = ~/.config/git/ignore
+	editor = vim
+	pager = delta
 [alias]
-    ss = status --short
-    dc = diff --cached
-    ds = diff --stat
-    ll = log --oneline
-    lc = log --oneline --no-decorate
-    lg = log --oneline --graph --date-order --all
-    ls = log --pretty=short --show-signature
-    unstage = reset HEAD --
+	ss = status --short
+	dc = diff --cached
+	ds = diff --stat
+	ll = log --oneline
+	lc = log --oneline --no-decorate
+	lg = log --oneline --graph --date-order --all
+	ls = log --pretty=short --show-signature
+	unstage = reset HEAD --
 [commit]
-    gpgsign = true
-    template = ~/.config/git/template
+	gpgsign = true
+	template = ~/.config/git/template
 [diff]
-    colorMoved = default
+	colorMoved = default
 [diff "astextplain"]
-    textconv = astextplain
+	textconv = astextplain
 [filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [gpg]
-    program = gpg
+	program = gpg
 [init]
-    defaultBranch = main
+	defaultBranch = main
 [interactive]
-    diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [merge]
-    conflictstyle = diff3
+	conflictstyle = diff3
 [pull]
-    rebase = false
+	rebase = false
 
 [delta]
-    features = side-by-side decoration
-    syntax-theme = base16
-    navigate = true
-    light = false
+	features = side-by-side decoration
+	syntax-theme = base16
+	navigate = true
+	light = false
 [delta "side-by-side"]
-    side-by-side = true
+	side-by-side = true
 [delta "decoration"]
-    line-numbers = true
-    file-style = bold green ul
-    hunk-header-decoration-style = box
+	line-numbers = true
+	file-style = bold green ul
+	hunk-header-decoration-style = box

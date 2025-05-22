@@ -1,5 +1,5 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+	# Commands to run in interactive sessions can go here
 end
 
 # Environment variable
@@ -7,15 +7,15 @@ set -x LANG ko_KR.UTF-8
 set -x EDITOR (which vim)
 set -x GPG_TTY (tty)
 if type -q bat
-    set -x MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat --language man --paging always'"
+	set -x MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat --language man --paging always'"
 end
 if type -q ranger
-    set -x RANGER_LOAD_DEFAULT_RC FALSE
+	set -x RANGER_LOAD_DEFAULT_RC FALSE
 end
 # .NET telemetry opt out
 if type -q dotnet
-    set -x DOTNET_CLI_TELEMETRY_OPTOUT true
-    set -x DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT true
+	set -x DOTNET_CLI_TELEMETRY_OPTOUT true
+	set -x DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT true
 end
 
 # XDG_CONFIG_HOME
@@ -50,74 +50,74 @@ fish_add_path -g $BUN_INSTALL/bin
 fish_add_path -g $ASDF_DATA_DIR/shims
 # Android SDK path
 if test -d $HOME/Library/Android/sdk
-    set -x ANDROID_HOME $HOME/Library/Android/sdk
-    fish_add_path -g $ANDROID_HOME/emulator
-    fish_add_path -g $ANDROID_HOME/platform-tools
+	set -x ANDROID_HOME $HOME/Library/Android/sdk
+	fish_add_path -g $ANDROID_HOME/emulator
+	fish_add_path -g $ANDROID_HOME/platform-tools
 end
 
 # Functions
 function workdir
-    # Move to workdir
-    if set -q WORKDIR
-        cd $WORKDIR
-    else if test -d $HOME/Workspaces
-        cd $HOME/Workspaces
-    else
-        echo "Error: WORKDIR or Workspaces not found."
-    end
+	# Move to workdir
+	if set -q WORKDIR
+		cd $WORKDIR
+	else if test -d $HOME/Workspaces
+		cd $HOME/Workspaces
+	else
+		echo "Error: WORKDIR or Workspaces not found."
+	end
 end
 
 function gpg-change-key
-    # Update start card status
-    if type -q gpg-connect-agent
-        gpg-connect-agent "scd serialno" "learn --force" /bye
-    else
-        echo "Error: gpg-connect-agent not found."
-    end
+	# Update start card status
+	if type -q gpg-connect-agent
+		gpg-connect-agent "scd serialno" "learn --force" /bye
+	else
+		echo "Error: gpg-connect-agent not found."
+	end
 end
 
 function tcp-ports
-    # Show TCP listening ports
-    if type -q ss
-        ss -naltp
-    else
-        netstat -nap tcp | rg --color never -e "Active" -e "Address" -e "LISTEN"
-    end
+	# Show TCP listening ports
+	if type -q ss
+		ss -naltp
+	else
+		netstat -nap tcp | rg --color never -e "Active" -e "Address" -e "LISTEN"
+	end
 end
 
 # Alias
 if type -q bat
-    alias bap='bat --paging auto'
-    alias baf='bat --style full'
+	alias bap='bat --paging auto'
+	alias baf='bat --style full'
 end
 
 if type -q lsd
-    alias l='lsd -F'
-    alias ll='lsd -lF'
-    alias la='lsd -AlF'
-    alias lsa='lsd -alF'
+	alias l='lsd -F'
+	alias ll='lsd -lF'
+	alias la='lsd -AlF'
+	alias lsa='lsd -alF'
 end
 
 # Launch GnuPG agent
 if type -q gpgconf
-    gpgconf --launch gpg-agent
+	gpgconf --launch gpg-agent
 end
 
 # Set up asdf
 if test -e $ASDF_DATA_DIR/asdf.fish
-    source $ASDF_DATA_DIR/asdf.fish
+	source $ASDF_DATA_DIR/asdf.fish
 else if test -e /opt/asdf-vm/asdf.fish
-    source /opt/asdf-vm/asdf.fish
+	source /opt/asdf-vm/asdf.fish
 else if type -q brew && test -e (brew --prefix asdf)/libexec/asdf.fish
-    source (brew --prefix asdf)/libexec/asdf.fish
+	source (brew --prefix asdf)/libexec/asdf.fish
 end
 
 # Auto completion for kubectl
 if type -q kubectl
-    kubectl completion fish | source
+	kubectl completion fish | source
 end
 
 # Starship prompt initialization
 if type -q starship
-    starship init fish | source
+	starship init fish | source
 end
