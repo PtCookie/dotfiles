@@ -1,10 +1,6 @@
-@define-color background #24273a;
-@define-color foreground #cad3f5;
-@define-color selected #181926;
-
 #window {
     border-radius: 12px;
-    background: @background;
+    background: #24273a;
 }
 
 #outer-box {
@@ -14,8 +10,8 @@
 #input {
     margin: 4px;
     border: none;
-    color: @foreground;
-    background: @selected;
+    color: #cad3f5;
+    background: #181926;
 }
 
 #scroll {
@@ -28,13 +24,13 @@
 
 #text {
     margin: 4px;
-    color: @foreground;
+    color: #cad3f5;
 }
 
 #entry:selected {
-    background: @selected;
+    background: #181926;
 }
 
 #expander-box {
-    background: @background;
+    background: #24273a;
 }
