@@ -1,8 +1,6 @@
 "query:Unread Articles:unread = \"yes\""
-https://news.ycombinator.com/rss
 https://jser.info/ko/rss/
 https://astro.build/rss.xml
 https://blog.kagi.com/rss.xml
 https://archlinux.org/feeds/news/
 https://www.debian.org/News/news
-https://lwn.net/headlines/newrss
