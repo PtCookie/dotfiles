@@ -1,2 +1,3 @@
+# vim: set ft=sh :
 # Hyprland Environment Variables
 export HYPRCURSOR_SIZE=24

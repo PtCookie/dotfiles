@@ -1,3 +1,4 @@
+# vim: set ft=dosini :
 font-family = JetBrains Mono
 theme = catppuccin-macchiato
 cursor-style = block

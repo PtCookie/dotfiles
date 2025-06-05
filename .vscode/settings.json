@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "{asdfrc,dunstrc,npmrc,config}": "properties",
+        "env*": "shellscript",
+        "template": "git-commit"
+    },
+}
