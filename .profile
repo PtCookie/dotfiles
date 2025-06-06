@@ -29,6 +29,11 @@ if command -v lsd &>/dev/null; then
 	alias lsa='lsd -alF'
 fi
 
+# Homebrew path on macOS
+if [ -d "/opt/homebrew/bin" ]; then
+	PATH="/opt/homebrew/bin:$PATH"
+fi
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ]; then
 	PATH="$HOME/.local/bin:$PATH"

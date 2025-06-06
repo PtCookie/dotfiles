@@ -42,6 +42,7 @@ set -x COREPACK_HOME $HOME/.local/share/corepack
 set -x GOPATH $HOME/.local/share/go
 
 # Path
+fish_add_path -g /opt/homebrew/bin
 fish_add_path -g $HOME/.local/bin
 fish_add_path -g $HOME/.dotnet/tools
 fish_add_path -g $CARGO_HOME/bin
