@@ -1,2 +1,2 @@
-# vim: set ft=dosini :
+# vim: ft=cfg
 legacy_version_file = yes

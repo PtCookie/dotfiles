@@ -48,4 +48,4 @@
 # 6. Wrap the body at 72 characters
 # 7. Use the body to explain what and why vs. how
 #
-# vim: set ft=gitcommit :
+# vim: ft=gitcommit

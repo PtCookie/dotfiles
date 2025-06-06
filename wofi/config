@@ -1,4 +1,4 @@
-# vim: set ft=dosini :
+# vim: ft=cfg
 width=800
 height=600
 allow_images=true
