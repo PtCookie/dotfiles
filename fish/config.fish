@@ -103,15 +103,6 @@ if type -q gpgconf
 	gpgconf --launch gpg-agent
 end
 
-# Set up asdf
-if test -e $ASDF_DATA_DIR/asdf.fish
-	source $ASDF_DATA_DIR/asdf.fish
-else if test -e /opt/asdf-vm/asdf.fish
-	source /opt/asdf-vm/asdf.fish
-else if type -q brew && test -e (brew --prefix asdf)/libexec/asdf.fish
-	source (brew --prefix asdf)/libexec/asdf.fish
-end
-
 # Auto completion for kubectl
 if type -q kubectl
 	kubectl completion fish | source
