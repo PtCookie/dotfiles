@@ -61,6 +61,8 @@ icons:
 ignore-globs:
   - .git
   - .idea
+  - .vscode
+  - node_modules
 
 # == Indicators ==
 # Whether to add indicator characters to certain listed files.
