@@ -39,7 +39,7 @@ if ! shopt -oq posix; then
 	fi
 fi
 
-if commnad -v bat &>/dev/null; then
+if command -v bat &>/dev/null; then
 	export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat --language man --paging always'"
 fi
 

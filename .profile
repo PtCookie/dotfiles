@@ -17,12 +17,12 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # Alias
-if commnad -v bat &>/dev/null; then
+if command -v bat &>/dev/null; then
 	alias bap='bat --paging auto'
 	alias baf='bat --style full'
 fi
 
-if commnad -v lsd &>/dev/null; then
+if command -v lsd &>/dev/null; then
 	alias l='lsd -F'
 	alias ll='lsd -lF'
 	alias la='lsd -AlF'
