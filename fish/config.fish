@@ -33,28 +33,30 @@ set -x GOMODCACHE $HOME/.cache/go/mod
 set -x DOTFILES $HOME/.local/share/dotfiles
 set -x PASSWORD_STORE_DIR $HOME/.local/share/pass
 set -x VAGRANT_HOME $HOME/.local/share/vagrant
+set -x GOPATH $HOME/.local/share/go
+set -x FLUTTER_ROOT $HOME/.local/share/flutter
 set -x RUSTUP_HOME $HOME/.local/share/rustup
 set -x CARGO_HOME $HOME/.local/share/cargo
+set -x COREPACK_HOME $HOME/.local/share/corepack
 set -x DENO_INSTALL $HOME/.local/share/deno
 set -x BUN_INSTALL $HOME/.local/share/bun
 set -x ASDF_DATA_DIR $HOME/.local/share/asdf
-set -x COREPACK_HOME $HOME/.local/share/corepack
-set -x GOPATH $HOME/.local/share/go
 
 # Path
 fish_add_path -g /opt/homebrew/bin
 fish_add_path -g $HOME/.local/bin
 fish_add_path -g $HOME/.dotnet/tools
+fish_add_path -g $FLUTTER_ROOT/bin
 fish_add_path -g $CARGO_HOME/bin
 fish_add_path -g $DENO_INSTALL/bin
 fish_add_path -g $BUN_INSTALL/bin
-fish_add_path -g $ASDF_DATA_DIR/shims
 # Android SDK path
 if test -d $HOME/Library/Android/sdk
 	set -x ANDROID_HOME $HOME/Library/Android/sdk
 	fish_add_path -g $ANDROID_HOME/emulator
 	fish_add_path -g $ANDROID_HOME/platform-tools
 end
+fish_add_path -g $ASDF_DATA_DIR/shims
 
 # Functions
 function workdir
