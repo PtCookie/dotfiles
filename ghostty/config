@@ -1,5 +1,6 @@
 # vim: ft=cfg
 font-family = JetBrains Mono
+font-family = D2Coding ligature
 theme = catppuccin-macchiato
 cursor-style = block
 background-opacity = 0.8
