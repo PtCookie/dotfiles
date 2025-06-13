@@ -82,7 +82,11 @@ if status is-interactive
 
 	function user-path
 		# Show PATH with fish_user_paths highlighted
-		set -x GREP_COLORS 'mt=1;34'
+		if uname | grep -q 'Darwin'
+			set -x GREP_COLOR '1;34'
+		else
+			set -x GREP_COLORS 'mt=1;34'
+		end
 		echo $PATH | grep (echo $fish_user_paths)
 	end
 
