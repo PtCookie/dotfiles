@@ -31,7 +31,10 @@ else if test -d $HOME/Android/Sdk
 end
 
 # Path
-fish_add_path -g /opt/homebrew/bin
+# Homebrew path
+if test -x /opt/homebrew/bin/brew
+	/opt/homebrew/bin/brew shellenv | source
+end
 fish_add_path -g $HOME/.local/bin
 fish_add_path -g $ASDF_DATA_DIR/shims
 fish_add_path -g $HOME/.dotnet/tools
