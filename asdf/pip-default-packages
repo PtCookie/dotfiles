@@ -1,3 +1,4 @@
 pipenv
 python-lsp-server
 python-lsp-ruff
+pre-commit
