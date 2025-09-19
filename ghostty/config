@@ -1,7 +1,7 @@
 # vim: ft=cfg
 font-family = JetBrains Mono
 font-family = D2Coding ligature
-theme = catppuccin-macchiato
+theme = Catppuccin Macchiato
 cursor-style = block
 background-opacity = 0.8
 background-blur = true
