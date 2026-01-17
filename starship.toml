@@ -7,6 +7,7 @@ disabled = false
 disabled = false
 [os.symbols]
 Arch = " "
+CachyOS = " "
 Debian = " "
 Macos = " "
 Windows = " "
