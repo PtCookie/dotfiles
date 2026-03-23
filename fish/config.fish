@@ -62,6 +62,20 @@ if type -q dotnet
 end
 
 if status is-interactive
+	# Set theme
+	fish_config theme choose "fish 3"
+
+	# Handle key bindings migration from fish 4.3
+	set -l _v (string split '.' -- $version)
+
+	if test "$_v[1]" -gt 4 2>/dev/null; or begin
+			test "$_v[1]" -eq 4 2>/dev/null
+			and test "$_v[2]" -ge 3 2>/dev/null
+		end
+		# fish >= 4.3
+		set --global fish_key_bindings fish_default_key_bindings
+	end
+
 	# Functions
 	function workdir
 		# Move to workdir
