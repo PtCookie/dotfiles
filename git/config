@@ -16,9 +16,9 @@
 	dc = diff --cached
 	ds = diff --stat
 	ll = log --oneline
-	lc = log --oneline --no-decorate
 	lg = log --oneline --graph --date-order --all
 	ls = log --pretty=short --show-signature
+	change = !git log --oneline --no-decorate --no-merges $(git describe --tags --abbrev=0)..HEAD
 	unstage = reset HEAD --
 [commit]
 	gpgsign = true
