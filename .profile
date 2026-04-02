@@ -33,3 +33,8 @@ fi
 if [ -d "$HOME/.local/bin" ]; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
+
+# alias gpg to Windows' binary if exists
+if [ -f /c/Program\ Files/GnuPG/bin/gpg ]; then
+	alias gpg='/c/Program\ Files/GnuPG/bin/gpg'
+fi
