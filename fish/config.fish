@@ -44,6 +44,7 @@ fish_add_path -g $DENO_INSTALL/bin
 fish_add_path -g $BUN_INSTALL/bin
 fish_add_path -g $ANDROID_HOME/emulator
 fish_add_path -g $ANDROID_HOME/platform-tools
+fish_add_path -g $ANDROID_HOME/cmdline-tools/latest/bin
 
 # Environment variable
 set -x LANG ko_KR.UTF-8
