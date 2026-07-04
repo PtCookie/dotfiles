@@ -2,7 +2,7 @@
 [user]
 	name = Minsup Ju
 	email = me@ptcookie.net
-	signingkey = 0xCE5C6CCB44A64621
+	signingkey = 0xFC175D3C1D1A6B6C
 [core]
 	eol = lf
 	autocrlf = input
