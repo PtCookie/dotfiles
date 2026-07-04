@@ -1,1 +1,10 @@
+# macOS-specific files
+.DS_Store
+
+# Claude Code
 **/.claude/settings.local.json
+CLAUDE.md
+
+# Other agents
+**/.junie/
+AGENTS.md
