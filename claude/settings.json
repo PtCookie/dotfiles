@@ -1,0 +1,21 @@
+{
+  "cleanupPeriodDays": 15,
+  "permissions": {},
+  "model": "opusplan",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
+  "enabledPlugins": {
+    "feature-dev@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true
+  },
+  "language": "korean",
+  "sandbox": {
+    "enabled": true
+  },
+  "tui": "fullscreen",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true
+}
