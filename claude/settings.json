@@ -1,6 +1,19 @@
 {
   "cleanupPeriodDays": 15,
-  "permissions": {},
+  "permissions": {
+    "allow": [
+      "Skill(claude-code-setup:*)",
+      "Skill(claude-md-management:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__query-docs"
+    ],
+    "deny": [
+      "Bash(find /)",
+      "Bash(find / *)",
+      "Bash(sudo)",
+      "Bash(sudo *)"
+    ]
+  },
   "model": "opusplan",
   "statusLine": {
     "type": "command",
@@ -9,13 +22,23 @@
   "enabledPlugins": {
     "feature-dev@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "claude-code-setup@claude-plugins-official": true
+    "claude-code-setup@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true
   },
   "language": "korean",
   "sandbox": {
-    "enabled": true
+    "enabled": true,
+    "allowUnsandboxedCommands": false,
+    "excludedCommands": [
+      "git commit *",
+      "git log *"
+    ],
+    "network": {
+      "allowLocalBinding": true
+    }
   },
   "tui": "fullscreen",
+  "theme": "dark",
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true
 }
