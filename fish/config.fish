@@ -17,11 +17,11 @@ set -x ASDF_DATA_DIR $HOME/.local/share/asdf
 set -x VAGRANT_HOME $HOME/.local/share/vagrant
 set -x COREPACK_HOME $HOME/.local/share/corepack
 set -x BUN_INSTALL $HOME/.local/share/bun
-set -x DENO_INSTALL $HOME/.local/share/deno
 set -x RUSTUP_HOME $HOME/.local/share/rustup
 set -x CARGO_HOME $HOME/.local/share/cargo
 set -x GOPATH $HOME/.local/share/go
 set -x FLUTTER_ROOT $HOME/.local/share/flutter
+set -x FOUNDRY_DIR $HOME/.local/share/foundry
 
 # Android SDK path
 if test -d $HOME/Library/Android/sdk
@@ -38,10 +38,10 @@ end
 fish_add_path -g $HOME/.local/bin
 fish_add_path -g $ASDF_DATA_DIR/shims
 fish_add_path -g $HOME/.dotnet/tools
-fish_add_path -g $FLUTTER_ROOT/bin
-fish_add_path -g $CARGO_HOME/bin
-fish_add_path -g $DENO_INSTALL/bin
 fish_add_path -g $BUN_INSTALL/bin
+fish_add_path -g $CARGO_HOME/bin
+fish_add_path -g $FOUNDRY_DIR/bin
+fish_add_path -g $FLUTTER_ROOT/bin
 fish_add_path -g $ANDROID_HOME/emulator
 fish_add_path -g $ANDROID_HOME/platform-tools
 fish_add_path -g $ANDROID_HOME/cmdline-tools/latest/bin
