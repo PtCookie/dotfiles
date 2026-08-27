@@ -40,8 +40,8 @@ fish_add_path -g $ASDF_DATA_DIR/shims
 fish_add_path -g $HOME/.dotnet/tools
 fish_add_path -g $BUN_INSTALL/bin
 fish_add_path -g $CARGO_HOME/bin
-fish_add_path -g $FOUNDRY_DIR/bin
 fish_add_path -g $FLUTTER_ROOT/bin
+fish_add_path -g $FOUNDRY_DIR/bin
 fish_add_path -g $ANDROID_HOME/emulator
 fish_add_path -g $ANDROID_HOME/platform-tools
 fish_add_path -g $ANDROID_HOME/cmdline-tools/latest/bin
@@ -124,11 +124,6 @@ if status is-interactive
 	# Launch GnuPG agent
 	if type -q gpgconf
 		gpgconf --launch gpg-agent
-	end
-
-	# Auto completion for kubectl
-	if type -q kubectl
-		kubectl completion fish | source
 	end
 
 	# Starship prompt initialization
