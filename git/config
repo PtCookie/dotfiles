@@ -23,6 +23,8 @@
 [commit]
 	gpgsign = true
 	template = ~/.config/git/template
+[tag]
+	gpgSign = true
 [diff]
 	colorMoved = default
 [diff "astextplain"]
