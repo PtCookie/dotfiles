@@ -1,5 +1,8 @@
 {
   "cleanupPeriodDays": 15,
+  "attribution": {
+    "sessionUrl": false
+  },
   "permissions": {
     "allow": [
       "Skill(claude-code-setup:*)",
@@ -25,17 +28,23 @@
     "commit-commands@claude-plugins-official": true
   },
   "language": "korean",
+  "remoteControlAtStartup": false,
   "sandbox": {
     "enabled": true,
     "allowUnsandboxedCommands": false,
+    "network": {
+      "allowLocalBinding": true
+    },
     "excludedCommands": [
       "git log *",
       "git commit *",
-      "git worktree *"
-    ],
-    "network": {
-      "allowLocalBinding": true
-    }
+      "git merge *",
+      "git tag *",
+      "git worktree *",
+      "gh *",
+      "glab *",
+      "docker *"
+    ]
   },
   "tui": "fullscreen",
   "theme": "dark",
