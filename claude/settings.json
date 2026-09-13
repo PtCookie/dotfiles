@@ -7,8 +7,8 @@
     "allow": [
       "Skill(claude-code-setup:*)",
       "Skill(claude-md-management:*)",
-      "mcp__context7__resolve-library-id",
-      "mcp__context7__query-docs"
+      "mcp__context7__*",
+      "mcp__MDN_Web_Docs__*"
     ],
     "deny": [
       "Bash(find /)",
@@ -28,19 +28,37 @@
     "commit-commands@claude-plugins-official": true
   },
   "language": "korean",
-  "remoteControlAtStartup": false,
   "sandbox": {
     "enabled": true,
     "allowUnsandboxedCommands": false,
+    "filesystem": {
+      "allowWrite": [
+        "~/.gnupg/trustdb.gpg",
+        "~/.local/share/pnpm",
+        "~/.local/share/cargo",
+        "~/.config/.wrangler",
+        "~/Library/pnpm",
+        "~/Library/Preferences/.wrangler"
+      ]
+    },
     "network": {
-      "allowLocalBinding": true
+      "allowLocalBinding": true,
+      "allowUnixSockets": [
+        "~/.gnupg/S.gpg-agent"
+      ],
+      "allowedDomains": [
+        "*.github.com",
+        "registry.npmjs.org",
+        "ui.shadcn.com",
+        "*.crates.io"
+      ]
+    },
+    "credentials": {
+      "files": [
+        { "path": "~/.ssh", "mode": "deny" }
+      ]
     },
     "excludedCommands": [
-      "git log *",
-      "git commit *",
-      "git merge *",
-      "git tag *",
-      "git worktree *",
       "gh *",
       "glab *",
       "docker *"
@@ -48,6 +66,7 @@
   },
   "tui": "fullscreen",
   "theme": "dark",
+  "remoteControlAtStartup": false,
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true
 }
