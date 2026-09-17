@@ -59,9 +59,12 @@
       ]
     },
     "excludedCommands": [
+      "git fetch *",
+      "git pull *",
       "gh *",
       "glab *",
-      "docker *"
+      "docker *",
+      "playwright-cli *"
     ]
   },
   "tui": "fullscreen",
