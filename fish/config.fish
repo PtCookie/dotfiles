@@ -21,6 +21,7 @@ set -x RUSTUP_HOME $HOME/.local/share/rustup
 set -x CARGO_HOME $HOME/.local/share/cargo
 set -x GOPATH $HOME/.local/share/go
 set -x FLUTTER_ROOT $HOME/.local/share/flutter
+set -x UNITY_CLI_HOME $HOME/.local/share/unity-cli
 set -x FOUNDRY_DIR $HOME/.local/share/foundry
 
 # Android SDK path
@@ -41,6 +42,7 @@ fish_add_path -g $HOME/.dotnet/tools
 fish_add_path -g $BUN_INSTALL/bin
 fish_add_path -g $CARGO_HOME/bin
 fish_add_path -g $FLUTTER_ROOT/bin
+fish_add_path -g $UNITY_CLI_HOME/bin
 fish_add_path -g $FOUNDRY_DIR/bin
 fish_add_path -g $ANDROID_HOME/emulator
 fish_add_path -g $ANDROID_HOME/platform-tools
