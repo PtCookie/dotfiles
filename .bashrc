@@ -77,17 +77,30 @@ fi
 if [ -x /opt/homebrew/bin/brew ]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
-export PATH="$HOME/.dotnet/tools:$PATH"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$CARGO_HOME/bin:$PATH"
-export PATH="$FLUTTER_ROOT/bin:$PATH"
-export PATH="$UNITY_CLI_HOME/bin:$PATH"
-export PATH="$FOUNDRY_DIR/bin:$PATH"
-export PATH="$ANDROID_HOME/emulator:$PATH"
-export PATH="$ANDROID_HOME/platform-tools:$PATH"
-export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
+
+# Add to path only if exists
+_add_to_path() {
+	if [ -d "$1" ]; then
+		case ":$PATH:" in
+		*":$1:"*) ;;
+		*) export PATH="$1:$PATH" ;;
+		esac
+	fi
+}
+
+_add_to_path "$HOME/.local/bin"
+_add_to_path "$ASDF_DATA_DIR/shims"
+_add_to_path "$HOME/.dotnet/tools"
+_add_to_path "$BUN_INSTALL/bin"
+_add_to_path "$CARGO_HOME/bin"
+_add_to_path "$FLUTTER_ROOT/bin"
+_add_to_path "$UNITY_CLI_HOME/bin"
+_add_to_path "$FOUNDRY_DIR/bin"
+_add_to_path "$ANDROID_HOME/emulator"
+_add_to_path "$ANDROID_HOME/platform-tools"
+_add_to_path "$ANDROID_HOME/cmdline-tools/latest/bin"
+
+unset -f _add_to_path
 
 # Environment variable
 export LANG=ko_KR.UTF-8
