@@ -8,7 +8,7 @@
       "Skill(claude-code-setup:*)",
       "Skill(claude-md-management:*)",
       "mcp__context7__*",
-      "mcp__MDN_Web_Docs__*"
+      "mcp__MDN__*"
     ],
     "deny": [
       "Bash(find /)",
@@ -48,6 +48,7 @@
       ],
       "allowedDomains": [
         "*.github.com",
+        "*.gitlab.com",
         "registry.npmjs.org",
         "ui.shadcn.com",
         "*.crates.io"
