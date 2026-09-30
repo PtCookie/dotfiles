@@ -12,6 +12,9 @@
 	editor = vim
 	pager = delta
 [alias]
+	bv = branch --verbose
+	br = branch --remotes --verbose
+	ba = branch --all --verbose
 	ss = status --short
 	dc = diff --cached
 	ds = diff --stat
