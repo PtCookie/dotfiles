@@ -1,0 +1,54 @@
+{
+  "plugins": {},
+  "userSettings": {
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_PROCEED_IN_SANDBOX",
+    "customThemeSeedsDark": {
+      "background": "#24273A",
+      "foregroundOverride": "#CAD3F5",
+      "primary": "#C6A0F6"
+    },
+    "customThemeSeedsLight": {
+      "background": "#EAECF0",
+      "foregroundOverride": "#4C4F69",
+      "primary": "#8839EF"
+    },
+    "enableTerminalSandbox": true,
+    "globalPermissionGrants": {
+      "allow": [
+        "write_file(~/.gnupg/trustdb.gpg)",
+        "write_file(~/.gnupg/S.gpg-agent)",
+        "write_file(~/.local/share/pnpm)",
+        "write_file(~/.local/share/cargo)",
+        "write_file(~/.config/.wrangler)",
+        "write_file(~/Library/pnpm)",
+        "write_file(~/Library/Preferences/.wrangler)",
+        "read_url(*.github.com)",
+        "read_url(*.gitlab.com)",
+        "read_url(registry.npmjs.org)",
+        "read_url(ui.shadcn.com)",
+        "read_url(*.crates.io)",
+        "read_url(localhost)",
+        "read_url(127.0.0.1)"
+      ],
+      "ask": [
+        "command(git fetch)",
+        "command(git pull)",
+        "command(gh)",
+        "command(glab)",
+        "command(docker)",
+        "command(playwright-cli)"
+      ],
+      "deny": [
+        "read_file(~/.ssh)",
+        "write_file(~/.ssh)"
+      ]
+    },
+    "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ASK",
+    "permissionGrantsV2Migrated": true,
+    "permissionPreset": "AGENT_PERMISSION_PRESET_DEFAULT",
+    "remoteControlHostname": "cookiebook-local-ultima-nova",
+    "sandboxEnabledAtV2Migration": true,
+    "themeMode": "THEME_MODE_INHERIT",
+    "verboseAgentChat": false
+  }
+}

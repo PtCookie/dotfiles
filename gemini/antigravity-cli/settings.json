@@ -1,0 +1,51 @@
+{
+  "agentMode": "accept-edits",
+  "artifactReviewPolicy": "agent-decides",
+  "enableTerminalSandbox": true,
+  "notifications": true,
+  "permissions": {
+    "allow": [
+      "read_file(~/.gemini)",
+      "command(git)",
+      "command(regex:pnpm run (build|lint|format|test))",
+      "write_file(~/.gnupg/trustdb.gpg)",
+      "write_file(~/.gnupg/S.gpg-agent)",
+      "write_file(~/.local/share/pnpm)",
+      "write_file(~/.local/share/cargo)",
+      "write_file(~/.config/.wrangler)",
+      "write_file(~/Library/pnpm)",
+      "write_file(~/Library/Preferences/.wrangler)",
+      "read_url(*.github.com)",
+      "read_url(*.gitlab.com)",
+      "read_url(registry.npmjs.org)",
+      "read_url(ui.shadcn.com)",
+      "read_url(*.crates.io)",
+      "read_url(localhost)",
+      "read_url(127.0.0.1)",
+      "mcp(context7/*)",
+      "mcp(MDN/*)",
+      "mcp(codegraph/*)"
+    ],
+    "deny": [
+      "read_file(~/.ssh)",
+      "write_file(~/.ssh)",
+      "command(find /)",
+      "command(sudo)"
+    ],
+    "ask": [
+      "command(git fetch)",
+      "command(git pull)",
+      "command(gh)",
+      "command(glab)",
+      "command(docker)",
+      "command(playwright-cli)"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.gemini/antigravity-cli/statusline.sh"
+  },
+  "toolPermission": "proceed-in-sandbox",
+  "trustedWorkspaces": [],
+  "verbosity": "low"
+}
