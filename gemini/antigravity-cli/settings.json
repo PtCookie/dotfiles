@@ -23,8 +23,7 @@
       "read_url(localhost)",
       "read_url(127.0.0.1)",
       "mcp(context7/*)",
-      "mcp(MDN/*)",
-      "mcp(codegraph/*)"
+      "mcp(MDN/*)"
     ],
     "deny": [
       "read_file(~/.ssh)",

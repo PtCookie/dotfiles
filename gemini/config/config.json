@@ -28,7 +28,9 @@
         "read_url(ui.shadcn.com)",
         "read_url(*.crates.io)",
         "read_url(localhost)",
-        "read_url(127.0.0.1)"
+        "read_url(127.0.0.1)",
+        "mcp(context7/*)",
+        "mcp(MDN/*)"
       ],
       "ask": [
         "command(git fetch)",
