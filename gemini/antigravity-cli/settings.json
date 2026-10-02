@@ -1,5 +1,6 @@
 {
   "agentMode": "accept-edits",
+  "altScreenMode": "always",
   "artifactReviewPolicy": "agent-decides",
   "enableTerminalSandbox": true,
   "notifications": true,
@@ -23,7 +24,8 @@
       "read_url(localhost)",
       "read_url(127.0.0.1)",
       "mcp(context7/*)",
-      "mcp(MDN/*)"
+      "mcp(MDN/*)",
+      "mcp(codegraph/*)"
     ],
     "deny": [
       "read_file(~/.ssh)",
@@ -46,5 +48,5 @@
   },
   "toolPermission": "proceed-in-sandbox",
   "trustedWorkspaces": [],
-  "verbosity": "low"
+  "verbosity": "medium"
 }

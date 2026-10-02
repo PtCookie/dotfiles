@@ -50,7 +50,7 @@
   qrst($b7; "%m/%d %H:%M")
 ' 2>/dev/null)"
 
-CYAN='\033[36m' GREEN='\033[32m' YELLOW='\033[33m' RED='\033[31m' RESET='\033[0m'
+CYAN='\033[36m' GREEN='\033[32m' YELLOW='\033[33m' RED='\033[31m' GRAY='\033[37m' RESET='\033[0m'
 BLOCKS="██████████" SPACES="░░░░░░░░░░"
 
 # Build progress bar: [██░░░░░░░░] 20%
@@ -66,15 +66,15 @@ render_bar() {
 	[ "$filled" -gt 10 ] && filled=10
 	[ "$filled" -lt 0 ] && filled=0
 	local empty=$((10 - filled))
-	printf "[%b%s%s%b] %b%d%%%b" "$color" "${BLOCKS:0:filled}" "${SPACES:0:empty}" "$RESET" "$color" "$pct" "$RESET"
+	printf "${GRAY}[%b%s${GRAY}%s] %b%d%%${GRAY}" "$color" "${BLOCKS:0:filled}" "${SPACES:0:empty}" "$color" "$pct"
 }
 
 # Assemble statusline
-STATUSLINE="${CYAN}[${MODEL}]${RESET}"
+STATUSLINE="${CYAN}[${MODEL}]${GRAY}"
 [ -n "$PCT" ] && STATUSLINE="${STATUSLINE}  ctx:$(render_bar "$PCT" 40)"
 STATUSLINE="${STATUSLINE} (in:${IN_FMT} / out:${OUT_FMT})"
 
-[ -n "$COST" ] && STATUSLINE="${STATUSLINE}  ${YELLOW}$(printf '$%.2f' "$COST")${RESET}"
+[ -n "$COST" ] && STATUSLINE="${STATUSLINE}  ${YELLOW}$(printf '$%.2f' "$COST")${GRAY}"
 
 if [ -n "$DURATION_MS" ] && [ "$DURATION_MS" -gt 0 ] 2>/dev/null; then
 	STATUSLINE="${STATUSLINE}  $((DURATION_MS / 60000))m $(((DURATION_MS % 60000) / 1000))s"
@@ -83,14 +83,14 @@ fi
 # Quota / Rate limits
 QUOTA_LINE=""
 if [ -n "$FIVE_HOUR_PCT" ]; then
-	QUOTA_LINE="5h:$(render_bar "$FIVE_HOUR_PCT")"
+	QUOTA_LINE="${GRAY}5h:$(render_bar "$FIVE_HOUR_PCT")"
 	[ -n "$FIVE_HOUR_RESET" ] && QUOTA_LINE="${QUOTA_LINE} (resets ${FIVE_HOUR_RESET})"
 fi
 if [ -n "$SEVEN_DAY_PCT" ]; then
-	LINE_7D="7d:$(render_bar "$SEVEN_DAY_PCT")"
+	LINE_7D="${GRAY}7d:$(render_bar "$SEVEN_DAY_PCT")"
 	[ -n "$SEVEN_DAY_RESET" ] && LINE_7D="${LINE_7D} (resets ${SEVEN_DAY_RESET})"
 	QUOTA_LINE="${QUOTA_LINE:+${QUOTA_LINE}  }${LINE_7D}"
 fi
 [ -n "$QUOTA_LINE" ] && STATUSLINE="${STATUSLINE}\n${QUOTA_LINE}"
 
-printf "%b" "$STATUSLINE"
+printf "%b%b" "$STATUSLINE" "$RESET"
