@@ -3,12 +3,25 @@
   "attribution": {
     "sessionUrl": false
   },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "codegraph prompt-hook"
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Skill(claude-code-setup:*)",
       "Skill(claude-md-management:*)",
       "mcp__context7__*",
-      "mcp__MDN__*"
+      "mcp__MDN__*",
+      "mcp__codegraph__*"
     ],
     "deny": [
       "Bash(find /)",
@@ -22,11 +35,7 @@
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
-  "enabledPlugins": {
-    "claude-md-management@claude-plugins-official": true,
-    "claude-code-setup@claude-plugins-official": true,
-    "commit-commands@claude-plugins-official": true
-  },
+  "enabledPlugins": {},
   "language": "korean",
   "sandbox": {
     "enabled": true,
